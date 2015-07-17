@@ -5,7 +5,7 @@
     </i>
     <%= question.content %>
   </div>
-  <div class="collapsible-body grey lighten-5">
+  <div class="collapsible-body grey lighten-5 <%= "grey-text" unless question.answer %>">
     <p>
       <%= question.answer ? question.answer : "There is no answer for this question" %>
     </p>
