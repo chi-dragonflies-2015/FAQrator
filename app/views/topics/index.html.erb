@@ -1,9 +1,9 @@
-<div class = "contaniner">
+<div class = "container">
   <ul class="collapsible" data-collapsible="expandable">
 
   	<% @topics.each do |topic| %>
 	<li>
-	  <div class="collapsible-header"><%= topic.title %></div>
+	  <div class="collapsible-header"><%= link_to( topic.title , topic_path(topic)) %></div>
       <div class="collapsible-body"><p><%= topic.description %></p></div>
    	</li>
    	<% end %>
