@@ -12,6 +12,7 @@ FAQrator is a tool for creating dynamic ad-hoc FAQS for events like lectures, cl
 ## Testing
 
 ## Schema
+![Initial Schema](/initial_schema.png "initial schema")
 
 ## Contributors
 * Henry Firth
