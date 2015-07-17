@@ -4,6 +4,8 @@
     <div class='form-group'>
       <div class='input-group-lg'>
         <%= form.text_field :content, :class => 'form-control', :placeholder => 'comment here' %>
+        <br>
+        <%= form.text_field :author, :class => 'form-control', :placeholder => 'optional name' %>
       </div>
     </div>
   <%= form.button 'Submit', :type => 'submit', :class => 'btn btn-default' %>
