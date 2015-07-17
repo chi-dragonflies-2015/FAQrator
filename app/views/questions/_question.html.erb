@@ -1,0 +1,13 @@
+<li>
+  <div class="collapsible-header">
+    <i class="material-icons text-lighten-1 blue-text">
+      <%= question.answer ? "chat_bubble" : "chat_bubble_outline" %>
+    </i>
+    <%= question.content %>
+  </div>
+  <div class="collapsible-body grey lighten-5">
+    <p>
+      <%= question.answer ? question.answer : "There is no answer for this question" %>
+    </p>
+  </div>
+</li>
