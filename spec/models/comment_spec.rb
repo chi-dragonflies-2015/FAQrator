@@ -9,6 +9,17 @@ describe Comment do
     expect(@comment.content).to eq "Test Comment"
   end
 
+  it "returns name when provided" do
+    @comment.author = "Pedro"
+    @comment.save
+    expect(@comment.author).to eq "Pedro"
+  end
+
+  it "returns Guest when name not provided" do
+    @comment.save
+    expect(@comment.author).to match(/Guest/)
+  end
+
   it "saves when valid" do
     @comment.valid?
     expect(@comment.errors).to be_empty
