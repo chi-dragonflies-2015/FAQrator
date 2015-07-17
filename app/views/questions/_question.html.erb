@@ -4,10 +4,13 @@
       <%= question.answer ? "chat_bubble" : "chat_bubble_outline" %>
     </i>
     <%= question.content %>
+<!--     <i class="material-icons text-lighten-1 grey-text right">
+      delete
+    </i> -->
   </div>
-  <div class="collapsible-body grey lighten-5 <%= "grey-text" unless question.answer %>">
+  <div class="collapsible-body grey lighten-5">
     <p>
-      <%= question.answer ? question.answer : "There is no answer for this question" %>
+      <%= question.answer ? question.answer : render(partial: "answer", locals: {question: question}) %>
     </p>
   </div>
 </li>
