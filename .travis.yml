@@ -1,0 +1,20 @@
+language: ruby
+cache: bundler
+rvm:
+- 2.0.0
+env:
+- DB=postgresql
+script:
+- bundle exec rake spec
+before_script:
+- bundle exec rake db:create RAILS_ENV=test
+- bundle exec rake db:migrate
+- bundle exec rake db:test:prepare
+bundler_args: --binstubs=./bundler_stubs
+deploy:
+  provider: heroku
+  api_key:
+    secure: p0d9HwgN6Rrnoln1ulAJAhIdzQxlU5W0x1RVHV71HQ2d1vIFCYRI7oziuw72HYHRaYYPYhCQGVCbEO1/0ZXzmE+6l9B1ZHrav1yMQ2Zv1hrheUFVCgHvP+9lcfIEYaDPIQwjobagF+3+NlAicLCH3zEBxEAwVKOMcRP/65dCN2sm1KoMilpUkJADg0vnq+0LkNQR+qxCrPbgOSuRb/UBA//hNAs0HkRRf7TqqwaVyEYsLx3U7uvmlnN1RT13bh4FGvnHuR6svh7uzOh3d3rdo3F52nrV/hcRh5MpqrSNZmMHyQIGmzZ7M5SBk9gT3Xh2OwIkdYCASjbRTxGR+o2/6qmbd8N1Ts47X/OeVkh9BZS0HZ0KCh7+8FznbW9E6yqLRwx68WxFaUFsX4gCVqxdAiWNdkz7cJnlEpdrEKg0XJsB6HB/t1J5Uomq9hcumkazgAh3roAYP2f/cxv6dGYIvZf2J3uDVCybDviAFNiuwvDlTr/k+5Sl2hdo4C66YfrQWYXgacvPSp8KSPmgcB2FM2dtMRcU6F7FtWAKMs1F+slKxYHdkQYE8Evgoc/sDxdQYr3qV+w7UhysfMhjKXOlzl++6AQTa0v3b7O2tuV9CxtxUifRLhWko8kjbBbEN5b6LEXjSpVkzClrEc3vzoiR0yRZZKSaYRWq1sRXuOhJXbM=
+  app: faqrator
+  on:
+    repo: chi-dragonflies-2015/FAQrator
