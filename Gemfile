@@ -50,6 +50,9 @@ group :development, :test do
   gem "database_cleaner"
 
   gem 'capybara'
+
+  gem 'faker'
+  
 end
 
 gem 'coveralls', require: false
