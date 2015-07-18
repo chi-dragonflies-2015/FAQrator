@@ -11,6 +11,8 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.create(question_params)
+    @question.topic_id = params[:topic_id]
+    @question.save
 
     if request.xhr?
       render partial: "question", locals: {question: @question}

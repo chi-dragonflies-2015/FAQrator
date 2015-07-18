@@ -48,7 +48,7 @@ $(document).ready(function(){
     event.stopPropagation();
   });
 
-  $('.modal').on('submit', 'form', function() {
+  $('.edit-modal').on('submit', 'form', function() {
     event.preventDefault();
 
     var url = $(this).attr('action');

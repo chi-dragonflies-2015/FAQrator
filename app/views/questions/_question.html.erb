@@ -25,7 +25,7 @@
 </li>
 
 <% unless question.answer %>
-  <div id="edit-question-<%= question.id %>" class="modal">
+  <div id="edit-question-<%= question.id %>" class="modal edit-modal">
     <div class="modal-content">
       <div class="row">
         <%= form_tag("/questions/#{question.id}", method: "put", class: "col s12") do %>
