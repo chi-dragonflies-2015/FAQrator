@@ -6,7 +6,7 @@ class TopicsController < ApplicationController
   end
 
   def show
-  	# @questions = @topic.questions
+  	@questions = @topic.questions
   end
 
   def new

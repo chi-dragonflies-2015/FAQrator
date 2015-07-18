@@ -2,10 +2,10 @@
   <div class="col s12 m10 offset-m1 l8 offset-l2">
     <ul class="collapsible popout" id="questions" data-collapsible="accordion">
       <% @questions.sort_by(&:created_at).each do |question| %>
-        <%= render partial: "question", locals: {question: question}%>
+        <%= render partial: "questions/question", locals: {question: question}%>
       <% end %>
     </ul>
   </div>
 </div>
 
-<%= render partial: "new", locals: {questions: @questions} %>
+<%= render partial: "questions/new", locals: {questions: @questions} %>
