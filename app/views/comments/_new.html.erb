@@ -1,0 +1,27 @@
+<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+  <a class="btn-floating btn-large darken-2 yellow modal-trigger" href="#new-comment">
+    <i class="material-icons">chat_bubble</i>
+  </a>
+</div>
+
+<div id="new-comment" class="modal">
+  <div class="modal-content">
+    <div class="row">
+      <%= form_tag("/comments", method: "post", class: "col s12") do %>
+        <div class="row">
+          <div class="input-field col s12">
+            <%= label_tag(:content, "Comment") %>
+            <%= text_field(:comment, :content) %>
+            <%= label_tag(:author, "Author") %>
+            <%= text_field(:comment, :author) %>
+          </div>
+          <div class="modal-footer">
+            <button class="btn waves-effect waves-light modal-close" type="submit" name="/comments">Submit
+              <i class="material-icons right">add</i>
+            </button>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
