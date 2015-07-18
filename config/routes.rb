@@ -7,13 +7,9 @@ Rails.application.routes.draw do
   get 'help' => 'static_pages#help'
   get 'about' => 'static_pages#about'
 
-  resources :topics, :only => [:index, :show, :new, :create]
+  resources :topics, :only => [:index, :show, :new, :create, :update, :destroy]
 
 
-  get '/topics/:slug/:secret_url' => 'topics#edit', as: 'edit_topic'
-
-  put '/topics/:slug' => 'topics#update'
-
-  delete '/topics/:slug' => 'topics#destroy', as: 'delete_topic'
+  get '/topics/:id/:edit_key' => 'topics#edit', as: 'edit_topic'
   
 end
