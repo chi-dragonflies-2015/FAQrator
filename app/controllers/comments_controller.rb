@@ -14,9 +14,14 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(comment_params)
+    @question = Question.find_by(id: params[:question_id])
+    @comment = @question.comments.build(comment_params)
     if @comment.save
-      redirect_to @comment, notice: 'comment was successfully created.'
+      if request.xhr?
+        render json: @comment
+      else
+        redirect_to questions_url, notice: 'comment was successfully created.'
+      end
     else
       render :new
     end

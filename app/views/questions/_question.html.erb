@@ -8,13 +8,14 @@
       <i class="material-icons text-lighten-1 grey-text right">delete</i>
     <% end %>
   </div>
+
   <div class="answer collapsible-body grey lighten-5">
-    <div class="comments-box">
-      <%= render partial: "comments/index", locals: {comments: question.comments}%>
-      <hr>
-    </div>
+
     <p>
       <%= question.answer ? question.answer : render(partial: "answer", locals: {question: question}) %>
     </p>
+  </div>
+  <div class="comment collapsible-body grey lighten-4">
+    <%= render partial: "comments/index", locals: {question: question}%>
   </div>
 </li>

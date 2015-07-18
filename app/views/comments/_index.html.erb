@@ -1,4 +1,5 @@
+Comments index
 <ul>
-<%= render comments %>
+<%= render question.comments %>
 </ul>
-<%= render partial: "new" %>
+<%= render partial: "comments/new", locals: {question: question} %>
