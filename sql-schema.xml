@@ -51,6 +51,7 @@
 <row name="Description" null="1" autoincrement="0">
 <datatype>TEXT</datatype>
 <default>NULL</default></row>
+<row name="friendly_url" null="1" autoincrement="0">
 <row name="slug" null="1" autoincrement="1">
 <datatype>TEXT</datatype>
 <default>NULL</default></row>
