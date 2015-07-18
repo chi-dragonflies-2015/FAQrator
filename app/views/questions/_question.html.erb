@@ -9,6 +9,10 @@
     <% end %>
   </div>
   <div class="answer collapsible-body grey lighten-5">
+    <div class="comments-box">
+      <%= render partial: "comments/index", locals: {comments: question.comments}%>
+      <hr>
+    </div>
     <p>
       <%= question.answer ? question.answer : render(partial: "answer", locals: {question: question}) %>
     </p>
