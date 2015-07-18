@@ -1,10 +1,11 @@
 class TopicsController < ApplicationController
+  before_action :set_topic, only: [:show, :edit, :update, :destroy]
+
   def index
   	@topics = Topic.all
   end
 
   def show
-  	@topic = Topic.friendly.find(params[:id])
   	# @questions = @topic.questions
   end
 
@@ -22,8 +23,6 @@ class TopicsController < ApplicationController
   end
 
   def edit
-  	@topic = Topic.friendly.find(params[:id])
-
   	if edit_key_matches?
       session[:edit_key] = params[:edit_key]
     else
@@ -32,8 +31,6 @@ class TopicsController < ApplicationController
   end
 
   def update
-   @topic = Topic.friendly.find(params[:id])
-
    if session_key_matches? && @topic.update_attributes(topic_params)
       flash[:success] = "Article Updated"
       session[:edit_key] = nil
@@ -43,14 +40,23 @@ class TopicsController < ApplicationController
     end
   end
 
-
-
-
+  def destroy
+  	if session_key_matches?
+      @topic.destroy
+      flash[:success] = "Article deleted"
+      session[:edit_key] = nil
+      redirect_to root_url
+    end
+  end
 
 private
 
   def topic_params
     params.require(:topic).permit(:title, :description)
+  end
+
+  def set_topic
+  	@topic = Topic.friendly.find(params[:id])
   end
 
   def edit_key_matches?
