@@ -31,6 +31,18 @@ class TopicsController < ApplicationController
     end
   end
 
+  def update
+   @topic = Topic.friendly.find(params[:id])
+
+   if session_key_matches? && @topic.update_attributes(topic_params)
+      flash[:success] = "Article Updated"
+      session[:edit_key] = nil
+      redirect_to topic_path(@topic)
+    else
+      render :edit
+    end
+  end
+
 
 
 
@@ -43,6 +55,10 @@ private
 
   def edit_key_matches?
     @topic.edit_key == params[:edit_key]
+  end
+
+  def session_key_matches?
+    @topic.edit_key == session[:edit_key]
   end
 
 end
