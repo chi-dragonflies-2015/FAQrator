@@ -4,9 +4,17 @@
       <%= question.answer ? "chat_bubble" : "chat_bubble_outline" %>
     </i>
     <%= question.content %>
+
     <%= link_to question, :class => 'question-delete right', method: :delete do %>
       <i class="material-icons text-lighten-1 grey-text right">delete</i>
     <% end %>
+
+    <% unless question.answer %>
+      <a class="question-edit right modal-trigger" href="#edit-question-<%= question.id %>">
+        <i class="material-icons text-lighten-1 grey-text right">edit</i>
+      </a>
+    <% end %>
+
   </div>
   <div class="answer collapsible-body grey lighten-5">
     <p>
@@ -14,3 +22,25 @@
     </p>
   </div>
 </li>
+
+<% unless question.answer %>
+  <div id="edit-question-<%= question.id %>" class="modal">
+    <div class="modal-content">
+      <div class="row">
+        <%= form_tag("/questions/#{question.id}", method: "put", class: "col s12") do %>
+          <div class="row">
+            <div class="input-field col s12">
+              <%= label_tag(:content, "Question") %>
+              <%= text_field(:question, :content, value: question.content) %>
+            </div>
+            <div class="modal-footer">
+              <button class="btn waves-effect waves-light modal-close" type="submit" name="/questions">Submit
+                <i class="material-icons right">send</i>
+              </button>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

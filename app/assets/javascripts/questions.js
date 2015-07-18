@@ -42,9 +42,30 @@ $(document).ready(function(){
     });
   });
 
-  $('.question-delete').on('click', function() {
+  $('.collapsible-header').on('click', '.question-edit', function() {
+    // event.preventDefault();
+    // event.stopPropagation();
+    event.stopImmediatePropagation();
+
+    // var url = $(this).attr('href');
+    // var data = $(this).serialize();
+
+    // var that = $(this).parents().eq(1);
+
+    // var request = $.ajax({
+    //                       url: url,
+    //                       method: 'PUT',
+    //                       data: data
+    // });
+
+    // request.done(function(response) {
+    //   console.log(response);
+    // });
+  });
+
+  $('.collapsible-header').on('click', '.question-delete', function() {
     event.preventDefault();
-    event.stopPropagation();
+    // event.stopPropagation();
     event.stopImmediatePropagation();
 
     if (confirm('Are you sure you want to delete this?')){
