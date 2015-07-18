@@ -1,0 +1,25 @@
+<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+  <a class="btn-floating btn-large darken-2 yellow modal-trigger" href="#new-question">
+    <i class="large material-icons">question_answer</i>
+  </a>
+</div>
+
+<div id="new-question" class="modal">
+  <div class="modal-content">
+    <div class="row">
+      <%= form_tag("/questions", method: "post", class: "col s12") do %>
+        <div class="row">
+          <div class="input-field col s12">
+            <%= label_tag(:content, "Question") %>
+            <%= text_field(:question, :content) %>
+          </div>
+          <div class="modal-footer">
+            <button class="btn waves-effect waves-light modal-close" type="submit" name="/questions">Submit
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
