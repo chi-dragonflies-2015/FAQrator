@@ -8,6 +8,8 @@ class TopicsController < ApplicationController
   	# @questions = @topic.questions
   end
 
- 
+  def new
+  end
+
 
 end
