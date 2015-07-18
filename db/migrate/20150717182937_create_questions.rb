@@ -3,7 +3,6 @@ class CreateQuestions < ActiveRecord::Migration
     create_table :questions do |t|
       t.string :content
       t.text :answer
-      # t.references :topic
 
       t.timestamps null: false
     end
