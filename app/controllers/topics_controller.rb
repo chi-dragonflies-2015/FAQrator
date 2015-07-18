@@ -21,6 +21,16 @@ class TopicsController < ApplicationController
   	end
   end
 
+  def edit
+  	@topic = Topic.friendly.find(params[:id])
+
+  	if edit_key_matches?
+      session[:edit_key] = params[:edit_key]
+    else
+      render_404
+    end
+  end
+
 
 
 
@@ -29,6 +39,10 @@ private
 
   def topic_params
     params.require(:topic).permit(:title, :description)
+  end
+
+  def edit_key_matches?
+    @topic.edit_key == params[:edit_key]
   end
 
 end
