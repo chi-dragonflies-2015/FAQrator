@@ -42,31 +42,34 @@ $(document).ready(function(){
     });
   });
 
-  $('.collapsible-header').on('click', '.question-edit', function() {
-    // event.preventDefault();
-    // event.stopPropagation();
-    event.stopImmediatePropagation();
-
-    // var url = $(this).attr('href');
-    // var data = $(this).serialize();
-
-    // var that = $(this).parents().eq(1);
-
-    // var request = $.ajax({
-    //                       url: url,
-    //                       method: 'PUT',
-    //                       data: data
-    // });
-
-    // request.done(function(response) {
-    //   console.log(response);
-    // });
+  $('.question-edit').on('click', function() {
+    event.preventDefault();
+    event.stopPropagation();
   });
 
-  $('.collapsible-header').on('click', '.question-delete', function() {
+  $('.modal').on('submit', 'form', function() {
     event.preventDefault();
-    // event.stopPropagation();
-    event.stopImmediatePropagation();
+
+    var url = $(this).attr('action');
+    var data = $(this).serialize();
+
+    var that = $(this).parents().eq(2);
+
+    var request = $.ajax({
+                          url: url,
+                          method: 'PUT',
+                          data: data
+    });
+
+    request.done(function(response) {
+      console.log(response.id);
+      $('#question-'+response.id+' .collapsible-header span').text(response.content)
+    });
+  });
+
+  $('.question-delete').on('click', function() {
+    event.preventDefault();
+    event.stopPropagation();
 
     if (confirm('Are you sure you want to delete this?')){
       var url = $(this).attr('href');
@@ -81,10 +84,9 @@ $(document).ready(function(){
       });
 
       request.done(function(response) {
-        console.log(response)
         that.remove();
       });
-    }
+    };
   });
 
 });

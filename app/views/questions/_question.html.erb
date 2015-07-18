@@ -1,10 +1,11 @@
-<li>
+<li id="question-<%= question.id %>">
   <div class="collapsible-header">
     <i class="material-icons text-lighten-1 blue-text">
       <%= question.answer ? "chat_bubble" : "chat_bubble_outline" %>
     </i>
-    <%= question.content %>
-
+    <span>
+      <%= question.content %>
+    </span>
     <%= link_to question, :class => 'question-delete right', method: :delete do %>
       <i class="material-icons text-lighten-1 grey-text right">delete</i>
     <% end %>
