@@ -10,7 +10,7 @@
   </div>
   <div class="answer collapsible-body grey lighten-5">
     <p>
-      <%= question.answer ? question.answer : render(partial: "answer", locals: {question: question}) %>
+      <%= question.answer ? question.answer : render(partial: "questions/answer", locals: {question: question}) %>
     </p>
   </div>
 </li>
