@@ -36,17 +36,34 @@ $(document).ready(function(){
                           data: data
     });
 
-    request.done(function(response) {that.html('<p>'+response.answer+'</p>');
-
+    request.done(function(response) {
+      that.html('<p>'+response.answer+'</p>');
       that.siblings('.collapsible-header').children('i').text('chat_bubble');
     });
+  });
 
-    $('.collapsible .collapsible-header').on('click', function() {
-      event.preventDefault();
-      console.log(event);
-      /* Act on the event */
-      event.stopPropagation();
-      event.stopImmediatePropagation();
-    });
-  })
+  $('.question-delete').on('click', function() {
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+
+    if (confirm('Are you sure you want to delete this?')){
+      var url = $(this).attr('href');
+      var data = $(this).serialize();
+
+      var that = $(this).parents().eq(1);
+
+      var request = $.ajax({
+                            url: url,
+                            method: 'DELETE',
+                            data: data
+      });
+
+      request.done(function(response) {
+        console.log(response)
+        that.remove();
+      });
+    }
+  });
+
 });

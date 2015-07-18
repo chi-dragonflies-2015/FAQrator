@@ -5,6 +5,10 @@ class QuestionsController < ApplicationController
     render :_questions
   end
 
+  def show
+
+  end
+
   def create
     @question = Question.create(question_params)
 
@@ -16,7 +20,7 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    @question = Question.find_by(id: params[:id])
+    @question = Question.find(params[:id])
     @question.update_attributes(question_params)
 
     if request.xhr?
@@ -27,7 +31,14 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
+    @question = Question.find(params[:id])
+    @question.destroy
 
+    if request.xhr?
+      render json: @question
+    else
+      redirect_to "/questions"
+    end
   end
 
 private
