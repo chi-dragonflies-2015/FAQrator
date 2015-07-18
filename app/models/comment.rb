@@ -4,7 +4,7 @@ class Comment < ActiveRecord::Base
   validates :content, presence: true
   validates :question, presence: true
 
-  after_initialize :init
+  before_save :init
 
   def init
     self.author ||= "Guest#{rand(1000)}"

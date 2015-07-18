@@ -29,7 +29,11 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
-    redirect_to comments_url, notice: 'Comment was successfully destroyed.'
+    if request.xhr?
+      render json: @question
+    else
+      redirect_to "/questions"
+    end
   end
   private
     def set_comment
