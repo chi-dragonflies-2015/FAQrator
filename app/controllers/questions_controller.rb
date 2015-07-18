@@ -19,7 +19,11 @@ class QuestionsController < ApplicationController
     @question = Question.find_by(id: params[:id])
     @question.update_attributes(question_params)
 
-    redirect_to "/questions"
+    if request.xhr?
+      render json: @question
+    else
+      redirect_to "/questions"
+    end
   end
 
   def destroy
