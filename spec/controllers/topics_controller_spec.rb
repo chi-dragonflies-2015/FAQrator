@@ -18,9 +18,9 @@ describe TopicsController do
 
   end
 
-  pending "Get #edit" do
+  describe "Get #edit" do
     it "assigns the requested topic as @topic" do
-      get :edit, { id: topic.to_param}
+      get :edit, { id: topic.to_param, edit_key: topic.edit_key}
       expect(assigns(:topic)).to eq(topic)
     end
   end
@@ -68,14 +68,14 @@ describe TopicsController do
       end
 
       it "redirects to the edited topic" do
-
+        session[:edit_key] = topic.edit_key
         put :update, edit_key: topic.edit_key, id: topic.friendly_id, topic: {title: topic.title, description: topic.description }
         expect(response).to redirect_to action: :show, id: assigns(:topic).friendly_id
       end
     end
 
     context "when invalid params are passed" do
-      it "assigns the accessed topic as @topic" do
+      it "assigns the accessed topic as @topic" do      
         put :update, edit_key: topic.edit_key, id: topic.friendly_id, topic: {title: nil, description: topic.description }
         expect(assigns(:topic).id).to eq topic.id
       end
@@ -89,19 +89,22 @@ describe TopicsController do
 
   describe "DELETE #destroy" do
     it "assigns the requested topic as @topic" do
+      session[:edit_key] = topic.edit_key
       delete :destroy, { id: topic.to_param, edit_key: topic.edit_key }
       expect(assigns(:topic)).to eq(topic)
     end
 
     it "destroys the requested topic" do
       expect {
-        delete :destroy, { id: topic.id, edit_key: topic.edit_key }
+        session[:edit_key] = topic.edit_key
+        delete :destroy, { id: topic.to_param, edit_key: topic.edit_key }
       }.to change(Topic, :count).by(-1)
     end
 
     it "redirects to the topic list" do
+      session[:edit_key] = topic.edit_key
       delete :destroy, { id: topic.to_param, edit_key: topic.edit_key }
-      expect(response).to redirect_to action: :index
+      expect(response).to redirect_to root_url
     end
   end
 end

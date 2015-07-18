@@ -46,6 +46,8 @@ class TopicsController < ApplicationController
       flash[:success] = "Article deleted"
       session[:edit_key] = nil
       redirect_to root_url
+    else
+      render_404
     end
   end
 
