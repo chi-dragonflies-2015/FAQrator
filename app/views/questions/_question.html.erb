@@ -1,0 +1,16 @@
+<li>
+  <div class="collapsible-header">
+    <i class="material-icons text-lighten-1 blue-text">
+      <%= question.answer ? "chat_bubble" : "chat_bubble_outline" %>
+    </i>
+    <%= question.content %>
+    <%= link_to question, :class => 'question-delete right', method: :delete do %>
+      <i class="material-icons text-lighten-1 grey-text right">delete</i>
+    <% end %>
+  </div>
+  <div class="answer collapsible-body grey lighten-5">
+    <p>
+      <%= question.answer ? question.answer : render(partial: "answer", locals: {question: question}) %>
+    </p>
+  </div>
+</li>

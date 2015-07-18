@@ -12,8 +12,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20150717220502) do
-
-  # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
@@ -23,5 +21,18 @@ ActiveRecord::Schema.define(version: 20150717220502) do
     t.datetime "updated_at"
     t.string   "author"
   end
+
+end
+
+ActiveRecord::Schema.define(version: 20150718023943) do
+
+  create_table "topics", force: :cascade do |t|
+    t.string "title"
+    t.text   "description"
+    t.string "edit_key"
+    t.string "slug"
+  end
+
+  add_index "topics", ["slug"], name: "index_topics_on_slug", using: :btree
 
 end
