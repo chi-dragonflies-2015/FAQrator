@@ -4,4 +4,7 @@ class Topic < ActiveRecord::Base
   validates :title, presence: true
   validates :description, presence: true
 
+  extend FriendlyId
+  friendly_id :title, use: [:slugged, :finders]
+
 end

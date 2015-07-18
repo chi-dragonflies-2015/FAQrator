@@ -5,6 +5,6 @@ class TopicsController < ApplicationController
 
   def show
   	@topic = Topic.find(params[:id])
-  	@questions = @topic.questions
+  	# @questions = @topic.questions
   end
 end
