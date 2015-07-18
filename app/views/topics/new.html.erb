@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <form class="col s12" action="/topics" method="POST">
+      <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="small material-icons">comment</i>
+          <input placeholder="Title" name="topic[title]" type="text" class="validate">
+          <textarea placeholder="Description" name="topic[description]" class="materialize-textarea"></textarea>
+           <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+              <i class="material-icons">send</i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

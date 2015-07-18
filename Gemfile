@@ -12,7 +12,8 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+# Create pretty URL’s and work with human-friendly strings 
+gem "friendly_id", "~> 5.0.1"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -49,6 +50,9 @@ group :development, :test do
   gem "database_cleaner"
 
   gem 'capybara'
+
+  gem 'faker'
+  
 end
 
 gem 'coveralls', require: false
