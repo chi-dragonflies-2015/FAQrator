@@ -11,12 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20150718023943) do
-
+ActiveRecord::Schema.define(version: 20150718193939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "question_id"
+    t.text     "content",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "author"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string   "content"
+    t.text     "answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "topic_id"
+  end
 
   create_table "topics", force: :cascade do |t|
     t.string "title"
@@ -26,12 +40,5 @@ ActiveRecord::Schema.define(version: 20150718023943) do
   end
 
   add_index "topics", ["slug"], name: "index_topics_on_slug", using: :btree
-
-  create_table "questions", force: :cascade do |t|
-    t.string   "content"
-    t.text     "answer"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
 end
