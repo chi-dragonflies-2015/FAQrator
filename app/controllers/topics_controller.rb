@@ -16,11 +16,15 @@ class TopicsController < ApplicationController
 
   	if @topic.save
       @topic.edit_key = SecureRandom.urlsafe_base64(6)
-      redirect_to topic_path(@topic)
+      redirect_to topic_path(@topic), notice: 'Topic was successfully created.'
   	else
   	  render :new
   	end
   end
+
+
+
+
 
 private
 
