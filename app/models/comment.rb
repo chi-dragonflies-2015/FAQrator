@@ -2,7 +2,7 @@ class Comment < ActiveRecord::Base
   belongs_to :question
 
   validates :content, presence: true
-  #validates :question, presence: true
+  validates :question, presence: true
 
   after_initialize :init
 
