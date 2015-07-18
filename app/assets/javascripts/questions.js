@@ -13,8 +13,6 @@ $(document).ready(function(){
     });
 
     request.done(function(response) {
-      console.log(response);
-
       $('#questions').append(response);
 
       $('.collapsible').collapsible({
@@ -38,10 +36,17 @@ $(document).ready(function(){
                           data: data
     });
 
-    request.done(function(response) {
-      console.log(response);
+    request.done(function(response) {that.html('<p>'+response.answer+'</p>');
 
-      that.html('<p>'+response.answer+'</p>');
+      that.siblings('.collapsible-header').children('i').text('chat_bubble');
+    });
+
+    $('.collapsible .collapsible-header').on('click', function() {
+      event.preventDefault();
+      console.log(event);
+      /* Act on the event */
+      event.stopPropagation();
+      event.stopImmediatePropagation();
     });
   })
 });
