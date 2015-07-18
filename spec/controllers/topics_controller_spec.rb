@@ -19,7 +19,7 @@ describe TopicsController do
   end
 
   pending "Get #edit" do
-    xit "assigns the requested topic as @topic" do
+    it "assigns the requested topic as @topic" do
       get :edit, { id: topic.to_param}
       expect(assigns(:topic)).to eq(topic)
     end
@@ -55,7 +55,7 @@ describe TopicsController do
       end
     end
   end
-  pending "PUT update" do
+  describe "PUT update" do
     context "when valid params are passed" do
 
       it "edits the current topic" do
@@ -87,7 +87,7 @@ describe TopicsController do
     end
   end
 
-  pending "DELETE #destroy" do
+  describe "DELETE #destroy" do
     it "assigns the requested topic as @topic" do
       delete :destroy, { id: topic.to_param, edit_key: topic.edit_key }
       expect(assigns(:topic)).to eq(topic)
