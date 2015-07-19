@@ -1,19 +1,20 @@
-<div class="container">
-  <div class="row col s12">
-    <%= form_for @topic do |f|  %>
-      <div class="row">
-        <div class="input-field col s6">
-          <i class="small material-icons">comment</i>
- 
-  		<%= f.text_field :title %><br />
+<div class="row col s12">
+  <%= form_for @topic do |f|  %>
+    <div class="row">
+      <div class="input-field col s6">
+        <i class="small material-icons">comment</i>
 
-  		<%= f.text_area :description %><br />
+    		<%= f.text_field :title %><br />
 
-  		<%= f.submit "Update" %>
-        </div>
+    		<%= f.text_area :description %><br />
+
+    		<%= f.submit "Update" %>
       </div>
-	<% end %>
+    </div>
+  <% end %>
 
-  <%= button_to "Delete Topic", topic_path(@topic), :method => :delete %>
-  </div>
+<%= button_to "Delete Topic", topic_path(@topic), :method => :delete %>
+
 </div>
+
+<%= render partial: "questions/questions", locals: {questions: @questions, topic_id: @topic.id, creator: true} %>
