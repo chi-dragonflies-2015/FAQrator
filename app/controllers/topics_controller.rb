@@ -16,7 +16,7 @@ class TopicsController < ApplicationController
   	@topic = Topic.new(topic_params)
 
   	if @topic.save
-      redirect_to topic_path(@topic), notice: 'Topic was successfully created.'
+      redirect_to (topic_path(@topic) + '/' + @topic.edit_key), notice: 'Topic was successfully created.'
   	else
   	  render :new
   	end
