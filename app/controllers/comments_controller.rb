@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
         redirect_to questions_url, notice: 'comment was successfully created.'
       end
     else
-      render :new
+      render :"_new", locals: {question: @question}
     end
   end
 
@@ -39,6 +39,7 @@ class CommentsController < ApplicationController
       redirect_to "/questions"
     end
   end
+
   private
     def set_comment
       @comment = Comment.find_by(id: params[:id])
