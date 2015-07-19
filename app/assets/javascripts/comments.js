@@ -6,7 +6,7 @@ $(document).ready(function(){
     var data = $(this).serialize();
 
     var that = $(this).parents().eq(1);
-
+    var thisForm = $(this)
     var request = $.ajax({
                           url: url,
                           method: 'post',
@@ -14,9 +14,14 @@ $(document).ready(function(){
     });
 
     request.done(function(response) {
-      console.log(that.find("ul"));
+      console.log(response.content);
+      if (response.content == undefined) {
+        that.find(".comment-error").text("Comment cannot be blank.");
+      }
+      else {
+      that.find(".comment-error").text("");
       that.find("ul").append('<li><i class="material-icons text-lighten-1 blue-text">comment</i>'+response.content+ ' - ' + response.author + ' Just Now!</li><hr>');
-
+      };
     });
   });
 
