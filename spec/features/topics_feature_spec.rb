@@ -1,6 +1,16 @@
 require 'rails_helper'
 
 feature "User visits the website" do
+    scenario "when user visits the homepage" do
+    topic = build(:topic) 
+    visit '/'
+    fill_in('topic[title]', :with => topic.title)
+    fill_in('topic[description]', :with => topic.description)
+    click_button 'submit'
+    expect(page).to have_content(topic.title)
+    expect(page).to have_content topic.description
+  end
+
   scenario "when user visits topics#index" do
     topic = create(:topic)
     visit '/topics'
@@ -21,7 +31,7 @@ feature "User posts a new topic" do
     visit 'topics/new'
     fill_in('topic[title]', :with => topic.title)
     fill_in('topic[description]', :with => topic.description)
-    click_button 'Submit'
+    click_button 'submit'
     expect(page).to have_content topic.title
     expect(page).to have_content topic.description
   end
