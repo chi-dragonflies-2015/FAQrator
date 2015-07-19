@@ -3,7 +3,7 @@
   <%= comment.content %> —
     <%= comment.author %>
   <%= comment.created_at.strftime("%b %d %l:%M %p") %>
-  <%= link_to comment, :class => 'comment-delete right', method: :delete do %>
+   <%= link_to comment, :class => 'comment-delete right', method: :delete do %>
     <i class="material-icons text-lighten-1 grey-text right">delete</i>
   <% end %>
   <hr>
