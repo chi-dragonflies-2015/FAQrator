@@ -21,10 +21,15 @@
     <% end %>
 
   </div>
+
   <div class="answer collapsible-body grey lighten-5">
+
     <p>
       <%= question.answer ? question.answer : ( creator ? render(partial: "questions/answer", locals: {question: question}) : "<span class='grey-text'>This question has no answer.</span>".html_safe )%>
     </p>
+  </div>
+  <div class="comment collapsible-body grey lighten-4">
+    <%= render partial: "comments/index", locals: {question: question}%>
   </div>
 </li>
 

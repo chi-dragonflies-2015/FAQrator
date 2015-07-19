@@ -75,7 +75,7 @@ describe TopicsController do
     end
 
     context "when invalid params are passed" do
-      it "assigns the accessed topic as @topic" do      
+      it "assigns the accessed topic as @topic" do
         put :update, edit_key: topic.edit_key, id: topic.friendly_id, topic: {title: nil, description: topic.description }
         expect(assigns(:topic).id).to eq topic.id
       end
