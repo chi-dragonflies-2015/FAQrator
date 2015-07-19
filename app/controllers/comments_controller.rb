@@ -14,12 +14,15 @@ class CommentsController < ApplicationController
   end
 
   def create
+    puts "request is xhr? #{ request.xhr?}"
     @question = Question.find_by(id: params[:question_id])
     @comment = @question.comments.build(comment_params)
     if @comment.save
       if request.xhr?
+        puts "AJAXY!"
         render json: @comment
       else
+        puts "NOT AJAXY!"
         redirect_to questions_url, notice: 'comment was successfully created.'
       end
     else
