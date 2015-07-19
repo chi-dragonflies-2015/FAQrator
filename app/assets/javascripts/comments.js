@@ -19,10 +19,12 @@ $(document).ready(function(){
         that.find(".comment-error").text("Comment cannot be blank.");
       }
       else {
+        console.log(that);
       that.find(".comment-error").text("");
       that.find("ul").append('<li><i class="material-icons text-lighten-1 blue-text">comment</i>'+response.content+ ' - ' + response.author + ' Just Now!</li><hr>');
       };
     });
+    $(this).closest('form').find("input[type=text], textarea").val("");
   });
 
   $('.comment-delete').on('click', function() {
