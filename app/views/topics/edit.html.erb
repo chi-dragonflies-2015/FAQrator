@@ -1,19 +1,32 @@
-<div class="row col s12">
-  <%= form_for @topic do |f|  %>
-    <div class="row">
-      <div class="input-field col s6">
-        <i class="small material-icons">comment</i>
-
-    		<%= f.text_field :title %><br />
-
-    		<%= f.text_area :description %><br />
-
-    		<%= f.submit "Update" %>
+<div class="row" style="margin-top: 50px">
+  <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+    <div class="card white darken-2">
+      <div class="card-content grey-text text-darken-3">
+        <h5><i class="small material-icons">comment</i> Edit Your Topic </h5>
+        <div class="row">
+          <%= form_tag("/topics/#{@topic.id}", method: "put", class: "col s12") do %>
+            <div class="row">
+              <div class="input-field col s12">
+                <%= text_field(:topic, :title, {value: @topic.title}) %>
+                <%= label_tag(:topic_title, "Title") %>
+              </div>
+              <div class="input-field col s12">
+                <%= text_area(:topic, :description, {value: @topic.description, class: "materialize-textarea"}) %>
+                <%= label_tag(:topic_description, "Description") %>
+              </div>
+              <%= link_to @topic, :class => 'topic-delete right', method: :delete do %>
+                <i class="material-icons medium text-lighten-1 grey-text right">delete</i>
+              <% end %>
+              <button class="btn waves-effect waves-light" type="submit" name="/topic/#{@topic.id}">Submit
+                <i class="material-icons right">send</i>
+              </button>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
-  <% end %>
-
-<%= button_to "Delete Topic", topic_path(@topic), :method => :delete %>
+  </div>
+</div>
 
 </div>
 
