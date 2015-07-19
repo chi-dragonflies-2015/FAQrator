@@ -13,10 +13,10 @@ class TopicsController < ApplicationController
   end
 
   def create
-  	@topic = Topic.new(topic_params)
+  	@topic = Topic.new(new_topic_params)
 
   	if @topic.save
-      redirect_to topic_path(@topic), notice: 'Topic was successfully created.'
+      redirect_to topic_path(@topic), notice: "Topic was successfully created. edit your page at #{topic_url(@topic)}/#{@topic.edit_key}"
   	else
   	  render :new
   	end
@@ -32,7 +32,7 @@ class TopicsController < ApplicationController
   end
 
   def update
-    if session_key_matches? && @topic.update_attributes(topic_params)
+    if session_key_matches? && @topic.update_attributes(edit_topic_params)
       flash[:success] = "Article Updated"
       session[:edit_key] = nil
       redirect_to topic_path(@topic)
@@ -54,8 +54,12 @@ class TopicsController < ApplicationController
 
 private
 
-  def topic_params
+  def new_topic_params
     params.require(:topic).permit(:title, :description)
+  end
+
+  def edit_topic_params
+    params.require(:topic).permit(:description)
   end
 
   def set_topic
