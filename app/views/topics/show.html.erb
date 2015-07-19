@@ -9,5 +9,5 @@
       </div>
     </div>
   </div>
-  <%= render partial: "questions/questions", locals: {questions: @questions} %>
+  <%= render partial: "questions/questions", locals: {questions: @questions, topic_id: @topic.id} %>
 </div>

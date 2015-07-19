@@ -23,7 +23,7 @@ class TopicsController < ApplicationController
   end
 
   def edit
-  	if edit_key_matches?
+    if edit_key_matches?
       session[:edit_key] = params[:edit_key]
     else
       render_404
@@ -31,7 +31,7 @@ class TopicsController < ApplicationController
   end
 
   def update
-   if session_key_matches? && @topic.update_attributes(topic_params)
+    if session_key_matches? && @topic.update_attributes(topic_params)
       flash[:success] = "Article Updated"
       session[:edit_key] = nil
       redirect_to topic_path(@topic)
@@ -41,7 +41,7 @@ class TopicsController < ApplicationController
   end
 
   def destroy
-  	if session_key_matches?
+    if session_key_matches?
       @topic.destroy
       flash[:success] = "Article deleted"
       session[:edit_key] = nil
