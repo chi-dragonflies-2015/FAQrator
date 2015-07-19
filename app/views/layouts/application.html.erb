@@ -10,6 +10,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 
 <body class="grey lighten-2">
@@ -23,8 +24,19 @@
       </ul>
     </div>
   </nav>
-
-<%= yield %>
+  <% if notice %>
+  <div class="row notice">
+    <div class="col s12 m10 offset-m1 l8 offset-l2">
+      <div class="card">
+        <div class="card-content grey-text text-darken-4">
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <%= yield %>
 
 </body>
 </html>
