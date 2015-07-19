@@ -11,26 +11,30 @@ class QuestionsController < ApplicationController
 
   def create
     @topic = Topic.find(params[:topic_id])
-    @question = Question.create(question_params)
-    @question.topic_id = @topic.id
-    @question.save
+    @question = @topic.questions.build(question_params)
 
-    if request.xhr?
-      render partial: "question", locals: {question: @question}
+    if @question.save
+      if request.xhr?
+        render partial: "question", locals: {question: @question}
+      else
+        redirect_to "/topics/#{@topic.slug}"
+      end
     else
-      redirect_to "/topics/#{@topic.slug}"
+      render :_new
     end
   end
 
   def update
     @question = Question.find(params[:id])
     @topic = @question.topic
-    @question.update_attributes(question_params)
-
-    if request.xhr?
-      render json: @question
+    if @question.update_attributes(question_params)
+      if request.xhr?
+        render json: @question
+      else
+        redirect_to "/topics/#{@topic.slug}"
+      end
     else
-      redirect_to "/topics/#{@topic.slug}"
+      render :_question
     end
   end
 
