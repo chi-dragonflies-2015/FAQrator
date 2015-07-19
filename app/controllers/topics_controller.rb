@@ -24,6 +24,7 @@ class TopicsController < ApplicationController
 
   def edit
     if edit_key_matches?
+      @questions = @topic.questions
       session[:edit_key] = params[:edit_key]
     else
       render_404
