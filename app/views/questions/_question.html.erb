@@ -25,7 +25,11 @@
   <div class="answer collapsible-body grey lighten-5">
 
     <p>
-      <%= question.answer ? question.answer : ( creator ? render(partial: "questions/answer", locals: {question: question, creator: true}) : "<span class='grey-text'>This question has no answer.</span>".html_safe )%>
+      <% if creator %>
+        <%= render(partial: "questions/answer", locals: {question: question, answer: question.answer}) %>
+      <% else %>
+        <%= question.answer ? question.answer : "<span class='grey-text'>This question has no answer.</span>".html_safe %>
+      <% end %>
     </p>
   </div>
   <div class="comment collapsible-body grey lighten-4">

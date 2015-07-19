@@ -39,7 +39,7 @@ describe TopicsController do
 
       it "redirects to the created topic" do
         post :create, topic: {title: topic.title, description: topic.description }
-        expect(response).to redirect_to action: :show, id: assigns(:topic).friendly_id
+        expect(response).to redirect_to action: :edit, id: assigns(:topic).friendly_id, edit_key: assigns(:topic).edit_key
       end
     end
 
