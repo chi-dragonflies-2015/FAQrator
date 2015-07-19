@@ -51,3 +51,7 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 end
+
+# Capybara.configure do |config|
+#   config.default_max_wait_time = 5
+# end

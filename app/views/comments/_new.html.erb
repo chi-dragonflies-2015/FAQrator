@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="comment-error"></div>
+  <%= form_tag("/comments", method: "post", class: "col s12") do %>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= hidden_field_tag(:question_id, question.id) %>
+        <%= text_area(:comment, :content, {placeholder: "comment here", class: "materialize-textarea"}) %>
+        <%= text_field(:comment, :author, placeholder: "author name") %>
+        <button class="btn waves-effect waves-light" type="submit" name="/comments">
+          <i class="material-icons right">add</i>
+        </button>
+      </div>
+    </div>
+  <% end %>
+</div>
