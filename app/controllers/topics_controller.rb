@@ -7,6 +7,7 @@ class TopicsController < ApplicationController
 
   def show
   	@questions = @topic.questions
+    @creator = false
   end
 
   def new
@@ -26,6 +27,7 @@ class TopicsController < ApplicationController
     if edit_key_matches?
       @questions = @topic.questions
       session[:edit_key] = params[:edit_key]
+      @creator = true
     else
       render_404
     end
