@@ -10,6 +10,7 @@
       <%= form_tag("/questions", method: "post", class: "col s12") do %>
         <div class="row">
           <div class="input-field col s12">
+            <%= hidden_field_tag(:topic_id, topic_id) %>
             <%= label_tag(:content, "Question") %>
             <%= text_field(:question, :content) %>
           </div>
