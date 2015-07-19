@@ -1,13 +1,13 @@
 
   <div class="row">
-    <form class="col s12 m8 offset-m2 l6 offset-m3" action="/topics" method="POST">
+    <form class="col s6" action="/topics" method="POST">
       <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
-        <div class="input-field col s6">
+        <div class="input-field col s10 offset-l3 white ">
           <i class="small material-icons">comment</i>
           <input placeholder="Title" name="topic[title]" type="text" class="validate">
           <textarea placeholder="Description" name="topic[description]" class="materialize-textarea"></textarea>
-           <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-              <i class="material-icons">send</i>
+           <button class="btn-floating btn-large waves-effect waves-light right red" type="submit">
+              <i class="material-icons">add</i>
           </button>
       </div>
     </form>
