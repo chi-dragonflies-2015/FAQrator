@@ -99,7 +99,7 @@ describe QuestionsController do
 
     it "redirects to the question list if not XHR" do
       delete :destroy, { id: question.to_param }
-      expect(response).to redirect_to questions_url
+      expect(response).to redirect_to assigns(:topic)
     end
   end
 end
