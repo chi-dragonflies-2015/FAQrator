@@ -10,7 +10,7 @@
           </button>
         <% else %>
           <%= label_tag(:answer, "Answer") %>
-          <%= text_area(:question, :answer, {class: "materialize-textarea"}) %>
+          <%= text_area(:question, :answer, {class: "materialize-textarea", placeholder: "Write your answer here!"}) %>
           <button class="btn waves-effect waves-light" type="submit" name="/questions/#{question.id}">Submit
             <i class="material-icons right">send</i>
           </button>

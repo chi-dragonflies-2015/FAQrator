@@ -18,7 +18,9 @@
 $primary-color: color("blue", "lighten-2") !default;
 @import 'materialize';
 
-
+span.question {
+  word-wrap: break-word;
+}
 
 .collapsible-header {
   white-space: normal;
