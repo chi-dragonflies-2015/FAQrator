@@ -2,7 +2,7 @@ class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
   def index
-  	@topics = Topic.all
+    @topics = params[:search] ? Topic.search(params[:search]) : Topic.all
   end
 
   def show
@@ -22,6 +22,14 @@ class TopicsController < ApplicationController
   	end
   end
 
+  def search
+    @topics = Topic.search(params[:search])
+    
+    if @topics.length == 0
+      redirect_to topics_path, notice: 'No topics match that criteria.'
+    end
+  end
+
   def edit
     if edit_key_matches?
       session[:edit_key] = params[:edit_key]
@@ -32,7 +40,7 @@ class TopicsController < ApplicationController
 
   def update
     if session_key_matches? && @topic.update_attributes(topic_params)
-      flash[:success] = "Article Updated"
+      flash[:success] = "Topic Updated"
       session[:edit_key] = nil
       redirect_to topic_path(@topic)
     else
@@ -43,7 +51,7 @@ class TopicsController < ApplicationController
   def destroy
     if session_key_matches?
       @topic.destroy
-      flash[:success] = "Article deleted"
+      flash[:success] = "Topic deleted"
       session[:edit_key] = nil
       redirect_to root_url
     else
