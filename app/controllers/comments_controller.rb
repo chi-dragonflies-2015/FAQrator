@@ -2,19 +2,16 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :destroy]
 
   def create
-    puts "request is xhr? #{ request.xhr?}"
     @question = Question.find_by(id: params[:question_id])
     @comment = @question.comments.build(comment_params)
-    if @comment.save
-      if request.xhr?
-        puts "AJAXY!"
-        render json: @comment
+    respond_to do |format|
+      if @comment.save
+        format.js
+        format.html { redirect_to topic_path(@comment.question.topic), notice: 'comment was successfully created.' }
       else
-        puts "NOT AJAXY!"
-        redirect_to questions_url, notice: 'comment was successfully created.'
+        format.html { render action: "_new" }
+        format.js { render 'create_errors.js'}
       end
-    else
-      render :"_new", locals: {question: @question}
     end
   end
 
@@ -24,10 +21,9 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
-    if request.xhr?
-      render text: "deleted"
-    else
-      redirect_to "/questions"
+    respond_to do |format|
+      format.js
+      format.html {redirect_to topic_path(@comment.question.topic)}
     end
   end
 
