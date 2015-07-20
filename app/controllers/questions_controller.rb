@@ -44,7 +44,7 @@ class QuestionsController < ApplicationController
     @question.destroy
 
     if request.xhr?
-      render json: @question
+      render text: "deleted"
     else
       redirect_to "/topics/#{@topic.slug}"
     end
