@@ -19,7 +19,7 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="<%= topics_url %>">View All Topics</a></li>
         <li><a href="<%= new_topic_path %>">Create A Topic</a></li>
-        <li><form id="search_form" action="/topics/search" method="POST" style="height: 60px;">
+        <li><form id="search_form" action="/topics/search" method="POST" style="height: 64px;">
         <div class="input-field">
           <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
           <input id="search" name="search" type="search"  required>
