@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150718234527) do
+ActiveRecord::Schema.define(version: 20150720191305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 20150718234527) do
   create_table "comments", force: :cascade do |t|
     t.integer  "question_id"
     t.text     "content",     null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "author"
     t.text     "response"
   end
@@ -34,12 +34,25 @@ ActiveRecord::Schema.define(version: 20150718234527) do
   end
 
   create_table "topics", force: :cascade do |t|
-    t.string "title"
-    t.text   "description"
-    t.string "edit_key"
-    t.string "slug"
+    t.string  "title"
+    t.text    "description"
+    t.string  "edit_key"
+    t.string  "slug"
+    t.integer "user_id"
   end
 
   add_index "topics", ["slug"], name: "index_topics_on_slug", using: :btree
+  add_index "topics", ["user_id"], name: "index_topics_on_user_id", using: :btree
 
+  create_table "users", force: :cascade do |t|
+    t.string   "username"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_foreign_key "topics", "users"
 end
