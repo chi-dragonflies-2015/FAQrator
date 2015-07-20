@@ -3,24 +3,37 @@
     <i class="material-icons text-lighten-1 blue-text">
       <%= question.answer ? "chat_bubble" : "chat_bubble_outline" %>
     </i>
-    <span>
+    <span class="question">
       <%= question.content %>
     </span>
-    <%= link_to question, :class => 'question-delete right', method: :delete do %>
-      <i class="material-icons text-lighten-1 grey-text right">delete</i>
-    <% end %>
 
-    <% unless question.answer %>
-      <a class="question-edit right modal-trigger" href="#edit-question-<%= question.id %>">
-        <i class="material-icons text-lighten-1 grey-text right">edit</i>
-      </a>
+    <% if creator %>
+      <%= link_to question, :class => 'question-delete right', method: :delete do %>
+        <i class="material-icons text-lighten-1 grey-text right">delete</i>
+      <% end %>
+    <% else %>
+
+      <%# unless question.answer %>
+<!--         <a class="question-edit right modal-trigger" href="#edit-question-<%= question.id %>">
+          <i class="material-icons text-lighten-1 grey-text right">edit</i>
+        </a> -->
+      <%# end %>
     <% end %>
 
   </div>
+
   <div class="answer collapsible-body grey lighten-5">
+
     <p>
-      <%= question.answer ? question.answer : render(partial: "questions/answer", locals: {question: question}) %>
+      <% if creator %>
+        <%= render(partial: "questions/answer", locals: {question: question, answer: question.answer}) %>
+      <% else %>
+        <%= question.answer ? question.answer : "<span class='grey-text'>This question has no answer.</span>".html_safe %>
+      <% end %>
     </p>
+  </div>
+  <div class="comment collapsible-body grey lighten-4">
+    <%= render partial: "comments/index", locals: {question: question}%>
   </div>
 </li>
 
@@ -45,3 +58,4 @@
     </div>
   </div>
 <% end %>
+

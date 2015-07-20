@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/topics/:id/:edit_key' => 'topics#edit', as: 'edit_topic'
   post '/topics/search' => 'topics#search'
   resources :questions
+  resources :comments, :only => [:create, :update, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

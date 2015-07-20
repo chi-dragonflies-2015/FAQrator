@@ -39,7 +39,7 @@ describe TopicsController do
 
       it "redirects to the created topic" do
         post :create, topic: {title: topic.title, description: topic.description }
-        expect(response).to redirect_to action: :show, id: assigns(:topic).friendly_id
+        expect(response).to redirect_to action: :edit, id: assigns(:topic).friendly_id, edit_key: assigns(:topic).edit_key
       end
     end
 
@@ -75,7 +75,7 @@ describe TopicsController do
     end
 
     context "when invalid params are passed" do
-      it "assigns the accessed topic as @topic" do      
+      it "assigns the accessed topic as @topic" do
         put :update, edit_key: topic.edit_key, id: topic.friendly_id, topic: {title: nil, description: topic.description }
         expect(assigns(:topic).id).to eq topic.id
       end

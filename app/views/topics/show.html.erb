@@ -1,13 +1,13 @@
-<div = "container">
-  <div class="row">
-    <div class="col s12 m10 offset-m1 l8 offset-l2">
-      <div class="card">
-        <div class="card-content grey-text text-darken-4">
-          <span class="card-title grey-text text-darken-4">  <%= @topic.title %>  </span>
-          <p>  <%= @topic.description %>  </p>
-        </div>
+<div class="row">
+  <div class="col s12 m10 offset-m1 l8 offset-l2">
+    <div class="card">
+      <div class="card-content grey-text text-darken-4">
+        <span class="card-title grey-text text-darken-4">  <%= @topic.title %>  </span>
+        <p>  <%= @topic.description %>  </p>
       </div>
     </div>
   </div>
-  <%= render partial: "questions/questions", locals: {questions: @questions, topic_id: @topic.id} %>
 </div>
+
+<%= render partial: "questions/questions", locals: {questions: @questions, topic_id: @topic.id, creator: @creator} %>
+
