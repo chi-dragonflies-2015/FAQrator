@@ -6,15 +6,9 @@ feature "User visits the website" do
     visit '/'
     fill_in('topic[title]', :with => topic.title)
     fill_in('topic[description]', :with => topic.description)
-<<<<<<< HEAD
     click_button 'new_submit'
     expect(page).to have_content(topic.title)
     expect(page).to have_content topic.description
-=======
-    click_button 'submit'
-    expect(page).to have_field('Title', with: topic.title)
-    expect(page).to have_content(topic.description)
->>>>>>> master
   end
 
   scenario "when user visits topics#index" do
