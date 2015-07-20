@@ -13,6 +13,7 @@ $(document).ready(function(){
   //   });
 
   //   request.done(function(response) {
+  //     console.log(response);
   //     $('#questions').append(response);
 
   //     $('.collapsible').collapsible({

@@ -15,7 +15,7 @@ class QuestionsController < ApplicationController
 
     if @question.save
       if request.xhr?
-        render partial: "question", locals: {question: @question}
+        render "questions/_question", locals: {question: @question, creator: false}, layout: false
       else
         redirect_to "/topics/#{@topic.slug}"
       end

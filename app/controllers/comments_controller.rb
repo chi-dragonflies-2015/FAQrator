@@ -20,10 +20,10 @@ class CommentsController < ApplicationController
     if @comment.save
       if request.xhr?
         puts "AJAXY!"
-        render json: @comment
+        render :"comments/_comment", locals: {comment: @comment}, layout: false
       else
         puts "NOT AJAXY!"
-        redirect_to questions_url, notice: 'comment was successfully created.'
+        redirect_to "/topics/#{@question.topic.slug}"
       end
     else
       render :"_new", locals: {question: @question}
