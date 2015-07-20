@@ -1,26 +1,14 @@
 class QuestionsController < ApplicationController
 
-  def index
-    @questions = Question.all
-    render :_questions
-  end
-
-  def show
-
-  end
-
   def create
     @topic = Topic.find(params[:topic_id])
     @question = @topic.questions.build(question_params)
+    respond_to do |format|
+      if @question.save
 
-    if @question.save
-      if request.xhr?
-        render partial: "question", locals: {question: @question}
       else
-        redirect_to "/topics/#{@topic.slug}"
+
       end
-    else
-      render :_new
     end
   end
 
