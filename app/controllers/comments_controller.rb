@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     if request.xhr?
-      render json: @question
+      render text: "deleted"
     else
       redirect_to "/questions"
     end

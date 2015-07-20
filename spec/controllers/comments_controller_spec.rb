@@ -18,6 +18,8 @@ describe CommentsController do
       it "renders the comment as json when xhr" do
         xhr :post, :create, question_id: question.id, comment: { content: comment.content }
         expect(response.code).to eq "200"
+        json = JSON.parse(response.body)
+        expect(json['content']).to eq comment.content
       end
 
       it "redirects to the created comment when not XHR" do
@@ -82,9 +84,10 @@ describe CommentsController do
       }.to change(Comment, :count).by(-1)
     end
 
-    it "renders json correctly when destroying as XHR" do
+    it "responds correctly when destroying as XHR" do
       xhr :delete, :destroy, id: comment.to_param
       expect(response.code).to eq "200"
+      expect(response.body).to eq "deleted"
     end
 
     it "redirects to the comment list if not XHR" do
