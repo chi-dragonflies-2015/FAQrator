@@ -45,7 +45,6 @@ $(document).ready(function(){
       });
 
       request.done(function(response) {
-        console.log(response);
         console.log(that);
         that.remove();
       });
