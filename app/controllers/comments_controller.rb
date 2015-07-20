@@ -1,18 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :destroy]
 
-  def index
-    @comments = Comment.all
-  end
-
-  def show
-
-  end
-
-  def new
-    @comment = Comment.new
-  end
-
   def create
     puts "request is xhr? #{ request.xhr?}"
     @question = Question.find_by(id: params[:question_id])
