@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(session[:user_id])
     @topics = @user.topics
-    redirect_to new_topics_path if @topics.length == 0
+    redirect_to new_topic_path if @topics.length == 0
   end
 
   def login
