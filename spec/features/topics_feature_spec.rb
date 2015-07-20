@@ -7,8 +7,8 @@ feature "User visits the website" do
     fill_in('topic[title]', :with => topic.title)
     fill_in('topic[description]', :with => topic.description)
     click_button 'new_submit'
-    expect(page).to have_content(topic.title)
-    expect(page).to have_content topic.description
+    expect(page).to have_selector("input[name='topic[title]']")
+    expect(page).to have_selector("textarea[name='topic[description]']")
   end
 
   scenario "when user visits topics#index" do
@@ -32,8 +32,8 @@ feature "User posts a new topic" do
     fill_in('topic[title]', :with => topic.title)
     fill_in('topic[description]', :with => topic.description)
     click_button 'new_submit'
-    expect(page).to have_content topic.title
-    expect(page).to have_content topic.description
+    expect(page).to have_selector("input[name='topic[title]']")
+    expect(page).to have_selector("textarea[name='topic[description]']")
   end
 end
 

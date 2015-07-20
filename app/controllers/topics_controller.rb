@@ -43,7 +43,7 @@ class TopicsController < ApplicationController
   end
 
   def update
-    if session_key_matches? && @topic.update_attributes(topic_params)
+    if session_key_matches? && @topic.update_attributes(edit_topic_params)
       flash[:success] = "Topic Updated"
       session[:edit_key] = nil
       redirect_to topic_path(@topic)
