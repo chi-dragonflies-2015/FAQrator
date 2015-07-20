@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   resources :topics, :only => [:index, :show, :new, :create, :update, :destroy]
   get '/topics/:id/:edit_key' => 'topics#edit', as: 'edit_topic'
   post '/topics/search' => 'topics#search'
+  get '/sessions/new' => 'users#login'
+  delete '/sessions' => 'users#logout'
+  resources :users, :except => :index
   resources :questions
   resources :comments, :only => [:create, :update, :destroy]
 
