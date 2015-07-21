@@ -21,17 +21,22 @@
           <a href="<%= root_url %>" class="brand-logo">FAQrator</a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="<%= topics_url %>">View Topics</a></li>
+            <li><a href="<%= topics_url %>">View All Topics</a></li>
             <li><a href="<%= new_topic_path %>">Create A Topic</a></li>
-            <li><a href="#">Find A Topic</a></li>
-          </ul>
-          <ul class="side-nav" id="mobile-demo">
-            <li><a href="<%= topics_url %>">View Topics</a></li>
-            <li><a href="<%= new_topic_path %>">Create A Topic</a></li>
-            <li><a href="#">Find A Topic</a></li>
-          </ul>
-        </div>
-      </div>
+            <li><form id="search_form" action="/topics/search" method="POST" style="height: 64px;">
+            <div class="input-field">
+              <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+              <input id="search" name="search" type="search"  required>
+           
+              <label for="search"><i class="material-icons">search</i></label>
+              <button id="search_submit" form="search_form" type="submit" style="width: 1px; height: 1px; background-color: Transparent;background-repeat:no-repeat;border: none;cursor:pointer;overflow: hidden; outline:none;"></button>
+            </div>
+      </form></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="<%= topics_url %>">View Topics</a></li>
+        <li><a href="<%= new_topic_path %>">Create A Topic</a></li>
+      </ul>
     </div>
   </nav>
   <% if notice %>
