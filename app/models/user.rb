@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   
   has_many :topics
   has_many :active_relationshhips, class_name:  "Relationship",foreign_key: "follower_id", dependent:   :destroy
-
+  has_many :following, through: :active_relationships, source: :followed
 
   validates :first_name, presence: true
   validates :last_name, presence: true
