@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
         format.js
         format.html { redirect_to topic_path(@comment.question.topic), notice: 'comment was successfully created.' }
       else
-        format.html { render action: "_new" }
+        format.html { render partial: "new" }
         format.js { render 'create_errors.js'}
       end
     end

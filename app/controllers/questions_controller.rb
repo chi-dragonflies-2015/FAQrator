@@ -5,8 +5,11 @@ class QuestionsController < ApplicationController
     @question = @topic.questions.build(question_params)
     respond_to do |format|
       if @question.save
-
+        format.js
+        format.html { redirect_to topic_path(@topic)}
       else
+        format.js { render "create_errors.js"}
+        format.html { redirect_to topic_path(@topic), notice: "question cannot be blank" }
 
       end
     end
