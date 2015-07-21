@@ -3,8 +3,10 @@
     <i class="material-icons text-lighten-1 blue-text">comment</i>
     <%= comment.content %> — <%= comment.author %>
     <%= comment.created_at.strftime("%b %d %l:%M %p") %>
-     <%= link_to comment, :class => 'comment-delete right', method: :delete do %>
-      <i class="material-icons text-lighten-1 grey-text right">delete</i>
+    <% if creator %>
+      <%= link_to comment, :class => 'comment-delete right', method: :delete do %>
+        <i class="material-icons text-lighten-1 grey-text right">delete</i>
+      <% end %>
     <% end %>
   </div>
   <div class="collapsible-body grey lighten-5"><p>[This is a response. Model this after answers for questions.]</p></div>
