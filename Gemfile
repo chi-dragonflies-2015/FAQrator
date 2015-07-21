@@ -53,6 +53,7 @@ group :development, :test do
 
   gem 'faker'
 
+  gem 'pry'
 end
 
 gem 'coveralls', require: false

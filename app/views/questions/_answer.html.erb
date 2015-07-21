@@ -1,5 +1,5 @@
 <div class="row">
-  <%= form_tag("/questions/#{question.id}", method: "put", class: "col s12") do %>
+  <%= form_tag("/questions/#{question.id}", method: "put", class: "col s12", remote: true) do %>
     <div class="row">
       <div class="input-field col s12">
         <% if answer %>

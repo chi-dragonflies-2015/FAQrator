@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe TopicsController do
   let!(:topic) { create(:topic) }
+  let!(:user) { create(:user) }
 
   describe "GET #index" do
     it "assigns all topics as @topics" do
@@ -23,6 +24,12 @@ describe TopicsController do
       get :edit, { id: topic.to_param, edit_key: topic.edit_key}
       expect(assigns(:topic)).to eq(topic)
     end
+
+    it "renders a 404 status when edit key is incorrect and user is not creator" do
+      get :edit, { id: topic.to_param, edit_key: 887492, user_id: user}
+      expect(response.status).to eq 404
+    end
+
   end
 
   describe "POST #create" do
@@ -88,6 +95,12 @@ describe TopicsController do
   end
 
   describe "DELETE #destroy" do
+    it "renders a 404 when edit key is incorrect" do
+      session[:edit_key] = 7
+      delete :destroy, { id: topic.to_param, edit_key: 7 }
+      expect(response.status).to eq 404
+    end
+
     it "assigns the requested topic as @topic" do
       session[:edit_key] = topic.edit_key
       delete :destroy, { id: topic.to_param, edit_key: topic.edit_key }

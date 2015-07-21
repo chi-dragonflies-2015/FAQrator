@@ -8,7 +8,7 @@
     </span>
 
     <% if creator %>
-      <%= link_to question, :class => 'question-delete right', method: :delete do %>
+      <%= link_to question, :class => 'question-delete right', method: :delete, remote: true do %>
         <i class="material-icons text-lighten-1 grey-text right">delete</i>
       <% end %>
     <% else %>
@@ -33,7 +33,7 @@
     </p>
   </div>
   <div class="comment collapsible-body grey lighten-4">
-    <%= render partial: "comments/index", locals: {question: question}%>
+    <%= render partial: "comments/index", locals: {question: question, creator: creator}%>
   </div>
 </li>
 
@@ -41,7 +41,7 @@
   <div id="edit-question-<%= question.id %>" class="modal edit-modal">
     <div class="modal-content">
       <div class="row">
-        <%= form_tag("/questions/#{question.id}", method: "put", class: "col s12") do %>
+        <%= form_tag("/questions/#{question.id}", method: "put", class: "col s12", remote: true) do %>
           <div class="row">
             <div class="input-field col s12">
               <%= label_tag(:content, "Question") %>
