@@ -20,7 +20,7 @@ class TopicsController < ApplicationController
 
       redirect_to (topic_path(@topic) + '/' + @topic.edit_key), notice: "Edit your page at #{topic_url(@topic)}/#{@topic.edit_key}"
   	else
-  	  render :new
+  	  render :new, notice: "cant be blank"
   	end
   end
 
