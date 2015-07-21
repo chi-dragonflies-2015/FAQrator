@@ -46,26 +46,26 @@ $(document).ready(function(){
   //   });
   // });
 
-  $('.question-delete').on('click', function() {
-    event.preventDefault();
-    event.stopPropagation();
+  // $('.question-delete').on('click', function() {
+  //   event.preventDefault();
+  //   event.stopPropagation();
 
-    if (confirm('Are you sure you want to delete this?')){
-      var url = $(this).attr('href');
-      var data = $(this).serialize();
+  //   if (confirm('Are you sure you want to delete this?')){
+  //     var url = $(this).attr('href');
+  //     var data = $(this).serialize();
 
-      var that = $(this).parents().eq(1);
+  //     var that = $(this).parents().eq(1);
 
-      var request = $.ajax({
-                            url: url,
-                            method: 'DELETE',
-                            data: data
-      });
+  //     var request = $.ajax({
+  //                           url: url,
+  //                           method: 'DELETE',
+  //                           data: data
+  //     });
 
-      request.done(function(response) {
-        that.remove();
-      });
-    };
-  });
+  //     request.done(function(response) {
+  //       that.remove();
+  //     });
+  //   };
+  // });
 
 });

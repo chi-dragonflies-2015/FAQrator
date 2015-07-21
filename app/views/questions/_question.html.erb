@@ -8,7 +8,7 @@
     </span>
 
     <% if creator %>
-      <%= link_to question, :class => 'question-delete right', method: :delete do %>
+      <%= link_to question, :class => 'question-delete right', method: :delete, remote: true do %>
         <i class="material-icons text-lighten-1 grey-text right">delete</i>
       <% end %>
     <% else %>

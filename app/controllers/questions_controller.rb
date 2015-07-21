@@ -32,11 +32,11 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @topic = @question.topic
     @question.destroy
-
-    if request.xhr?
-      render text: "deleted"
-    else
-      redirect_to "/topics/#{@topic.slug}"
+    @questions = @topic.questions
+    @creator = true
+    respond_to do |format|
+      format.js
+      format.html {redirect_to topic_path(@topic)}
     end
   end
 
