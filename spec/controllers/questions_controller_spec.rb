@@ -18,14 +18,14 @@ describe QuestionsController do
       it "renders a partial when an XHR request" do
         xhr :post, :create, question: { content: question.content}, topic_id: topic.id
         expect(response.code).to eq "200"
-        expect(response).to render_template("_question")
+
       end
     end
 
     context "when invalid params are passed" do
       it "renders the new partial" do
         post :create, question: { content: nil }, topic_id: topic.id
-        expect(response).to render_template("_new")
+        expect(response).to redirect_to topic_path(topic)
       end
     end
   end
@@ -46,13 +46,12 @@ describe QuestionsController do
         expect(assigns(:question)).to eq(Question.last)
       end
 
-      it "renders JSON correctly when handling an XHR request" do
+      it "replies correctly when handling an XHR request" do
         question.topic_id = topic.id
         question.save
         xhr :put, :update, id: question.id, question: { content: question.content }
         expect(response.code).to eq "200"
-        json = JSON.parse(response.body)
-        expect(json['content']).to eq question.content
+
       end
 
       it "redirects to the topics page containing the edited question" do
@@ -67,7 +66,7 @@ describe QuestionsController do
       it "assigns the accessed question as @question" do
         question.topic_id = topic.id
         question.save
-        put :update, id: question.id, question: { content: nil }
+        put :update, id: question.id, question: { content: "" }
         expect(assigns(:question).id).to eq question.id
       end
     end
@@ -94,7 +93,6 @@ describe QuestionsController do
       question.save
       xhr :delete, :destroy, id: question.to_param
       expect(response.code).to eq "200"
-      expect(response.body).to eq "deleted"
     end
 
     it "redirects to the question list if not XHR" do

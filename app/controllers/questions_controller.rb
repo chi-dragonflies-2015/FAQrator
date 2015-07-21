@@ -23,7 +23,8 @@ class QuestionsController < ApplicationController
         format.js {render "answer.js"}
         format.html { redirect_to topic_path(@topic)}
       else
-        render :_question
+        format.js{ render :_question}
+        format.html { render :_question}
       end
     end
   end
