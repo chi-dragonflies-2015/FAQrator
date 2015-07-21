@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :topics
+  has_many :active_relationshhips
 
   has_secure_password
 
