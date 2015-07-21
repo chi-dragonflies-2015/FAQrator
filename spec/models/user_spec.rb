@@ -13,9 +13,18 @@ describe User do
       expect(@user1.following).to include @user2
     end
 
+    it "follows other users correctly" do
+      expect(@user2.followers).to include @user1
+    end
+
     it "unfollows other users correctly" do
       @user1.unfollow(@user2)
       expect(@user1.following).not_to include @user2
+    end
+
+    it "unfollows other users correctly" do
+      @user1.unfollow(@user2)
+      expect(@user2.followers).not_to include @user1
     end
 
   end
