@@ -1,5 +1,6 @@
 class Topic < ActiveRecord::Base
   has_many :questions
+  belongs_to :user
 
   validates :title, presence: true
   validates :description, presence: true

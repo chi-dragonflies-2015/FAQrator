@@ -15,7 +15,7 @@ class TopicsController < ApplicationController
 
   def create
   	@topic = Topic.new(new_topic_params)
-
+    @topic.user = current_user
   	if @topic.save
 
       redirect_to (topic_path(@topic) + '/' + @topic.edit_key), notice: "Edit your page at #{topic_url(@topic)}/#{@topic.edit_key}"
@@ -26,14 +26,14 @@ class TopicsController < ApplicationController
 
   def search
     @topics = Topic.search(params[:search])
-    
+
     if @topics.length == 0
       redirect_to topics_path, notice: 'No topics match that criteria.'
     end
   end
 
   def edit
-    if edit_key_matches?
+    if edit_key_matches? || user_matches?
       @questions = @topic.questions
       session[:edit_key] = params[:edit_key]
       @creator = true
@@ -83,6 +83,10 @@ private
 
   def session_key_matches?
     @topic.edit_key == session[:edit_key]
+  end
+
+  def user_matches?
+    @topic.user.id ? session[:user_id] == @topic.user.id : false
   end
 
 end
