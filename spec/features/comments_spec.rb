@@ -8,7 +8,7 @@ feature "User visits the website" do
     visit topic_path(topic)
 
     find('.popout .collapsible-header', :text => question.content).click
-    expect(page).to have_selector("textarea[name='comment[content]']")
+    expect(page).to have_selector("input[name='comment[content]']")
     expect(page).to have_selector("input[name='comment[author]']")
   end
 
