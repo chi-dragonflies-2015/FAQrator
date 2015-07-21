@@ -19,13 +19,6 @@ class UsersController < ApplicationController
     redirect_to new_topic_path if @topics.length == 0
   end
 
-  def login
-
-  end
-
-  def logout
-
-  end
 
 private
 
