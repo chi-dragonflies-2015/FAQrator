@@ -1,0 +1,5 @@
+$("#new-question #errors").text("");
+$("<%= escape_javascript(render partial: @question, locals: {creator: false}) %>").appendTo("#questions");
+$('.collapsible').collapsible({
+  accordion : true
+});

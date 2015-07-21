@@ -15,14 +15,15 @@ describe CommentsController do
         expect(assigns(:comment)).to eq(Comment.last)
       end
 
-      it "renders the comment as json when xhr" do
+      it "renders the comment when xhr" do
         xhr :post, :create, question_id: question.id, comment: { content: comment.content }
         expect(response.code).to eq "200"
+
       end
 
       it "redirects to the created comment when not XHR" do
         post :create, question_id: question.id, comment: { content: comment.content }
-        expect(response).to redirect_to "/questions"
+        expect(response).to redirect_to topic_path(question.topic)
       end
     end
 
@@ -82,14 +83,14 @@ describe CommentsController do
       }.to change(Comment, :count).by(-1)
     end
 
-    it "renders json correctly when destroying as XHR" do
+    it "responds correctly when destroying as XHR" do
       xhr :delete, :destroy, id: comment.to_param
       expect(response.code).to eq "200"
     end
 
     it "redirects to the comment list if not XHR" do
       delete :destroy, { id: comment.to_param }
-      expect(response).to redirect_to questions_url
+      expect(response).to redirect_to topic_path(comment.question.topic)
     end
   end
 end

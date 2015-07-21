@@ -1,40 +1,31 @@
 class QuestionsController < ApplicationController
 
-  def index
-    @questions = Question.all
-    render :_questions
-  end
-
-  def show
-
-  end
-
   def create
     @topic = Topic.find(params[:topic_id])
     @question = @topic.questions.build(question_params)
-
-    if @question.save
-      if request.xhr?
-        render partial: "question", locals: {question: @question}
+    respond_to do |format|
+      if @question.save
+        format.js
+        format.html { redirect_to topic_path(@topic)}
       else
-        redirect_to "/topics/#{@topic.slug}"
+        format.js { render "create_errors.js"}
+        format.html { redirect_to topic_path(@topic), notice: "question cannot be blank" }
+
       end
-    else
-      render :_new
     end
   end
 
   def update
     @question = Question.find(params[:id])
     @topic = @question.topic
-    if @question.update_attributes(question_params)
-      if request.xhr?
-        render json: @question
+    respond_to do |format|
+      if @question.update_attributes(question_params)
+        format.js {render "answer.js"}
+        format.html { redirect_to topic_path(@topic)}
       else
-        redirect_to "/topics/#{@topic.slug}"
+        format.js{ render :_question}
+        format.html { render :_question}
       end
-    else
-      render :_question
     end
   end
 
@@ -42,11 +33,11 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @topic = @question.topic
     @question.destroy
-
-    if request.xhr?
-      render json: @question
-    else
-      redirect_to "/topics/#{@topic.slug}"
+    @questions = @topic.questions
+    @creator = true
+    respond_to do |format|
+      format.js
+      format.html {redirect_to topic_path(@topic)}
     end
   end
 

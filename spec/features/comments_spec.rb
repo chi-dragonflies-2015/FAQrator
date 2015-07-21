@@ -12,25 +12,27 @@ feature "User visits the website" do
     expect(page).to have_selector("input[name='comment[author]']")
   end
 
-  pending "when user visits a question, comment can be created and appears correctly" do
+  scenario "when user visits a question, comment can be created and appears correctly" do
     comment = build(:comment, question: question)
     visit topics_path
     click_link(topic.title)
-    find('.collapsible-header', :text => question.content).click
-    fill_in('comment[content]', :with => comment.content)
-    fill_in('comment[author]', :with => comment.author)
-    click_button 'add'
-    #wait_for_ajax
+    find('.popout .collapsible-header', :text => question.content).click
+    within('.popout') do
+      fill_in "comment[content]", :with => comment.content
+      fill_in'comment[author]', :with => comment.author
+      click_button 'add'
+    end
     expect(page).to have_content comment.content
     expect(page).to have_content comment.author
-    #expect(page).to have_content "Just Now!"
   end
 
-  pending "when creator deletes a question" do
+  scenario "when creator deletes a question" do
     comment = create(:comment, question: question)
     visit "/topics/#{topic.friendly_id}"
-    find('.collapsible-header', :text => question.content).click
-    click_link("delete", options = {href: comment_path(comment) })
+    find('.popout .collapsible-header', :text => question.content).click
+      within('.popout') do
+        click_link("delete", options = {href: comment_path(comment) })
+      end
     expect(page).to_not have_content comment.content
   end
 end

@@ -38,7 +38,7 @@ class TopicsController < ApplicationController
       session[:edit_key] = params[:edit_key]
       @creator = true
     else
-      render_404
+      render status: 404
     end
   end
 
@@ -59,7 +59,7 @@ class TopicsController < ApplicationController
       session[:edit_key] = nil
       redirect_to root_url
     else
-      render_404
+      render status: 404
     end
   end
 
