@@ -18,14 +18,13 @@ class QuestionsController < ApplicationController
   def update
     @question = Question.find(params[:id])
     @topic = @question.topic
-    if @question.update_attributes(question_params)
-      if request.xhr?
-        render json: @question
+    respond_to do |format|
+      if @question.update_attributes(question_params)
+        format.js {render "answer.js"}
+        format.html { redirect_to topic_path(@topic)}
       else
-        redirect_to "/topics/#{@topic.slug}"
+        render :_question
       end
-    else
-      render :_question
     end
   end
 

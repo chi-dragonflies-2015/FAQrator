@@ -1,50 +1,50 @@
 $(document).ready(function(){
 
-  $('.answer').on('submit', 'form', function() {
-    event.preventDefault();
+  // $('.answer').on('submit', 'form', function() {
+  //   event.preventDefault();
 
-    var url = $(this).attr('action');
-    var data = $(this).serialize();
+  //   var url = $(this).attr('action');
+  //   var data = $(this).serialize();
 
-    var that = $(this).parents().eq(1);
+  //   var that = $(this).parents().eq(1);
 
-    var request = $.ajax({
-                          url: url,
-                          method: 'PUT',
-                          data: data
-    });
+  //   var request = $.ajax({
+  //                         url: url,
+  //                         method: 'PUT',
+  //                         data: data
+  //   });
 
-    request.done(function(response) {
-      that.html('<p>'+response.answer+'</p>');
-      that.siblings('.collapsible-header').children('i').text('chat_bubble');
-      that.siblings('.collapsible-header').children('.question-edit').remove();
-    });
-  });
+  //   request.done(function(response) {
+  //     that.html('<p>'+response.answer+'</p>');
+  //     that.siblings('.collapsible-header').children('i').text('chat_bubble');
+  //     that.siblings('.collapsible-header').children('.question-edit').remove();
+  //   });
+  // });
 
   $('.question-edit').on('click', function() {
     event.preventDefault();
     event.stopPropagation();
   });
 
-  $('.edit-modal').on('submit', 'form', function() {
-    event.preventDefault();
+  // $('.edit-modal').on('submit', 'form', function() {
+  //   event.preventDefault();
 
-    var url = $(this).attr('action');
-    var data = $(this).serialize();
+  //   var url = $(this).attr('action');
+  //   var data = $(this).serialize();
 
-    var that = $(this).parents().eq(2);
+  //   var that = $(this).parents().eq(2);
 
-    var request = $.ajax({
-                          url: url,
-                          method: 'PUT',
-                          data: data
-    });
+  //   var request = $.ajax({
+  //                         url: url,
+  //                         method: 'PUT',
+  //                         data: data
+  //   });
 
-    request.done(function(response) {
-      console.log(response.id);
-      $('#question-'+response.id+' .collapsible-header span').text(response.content)
-    });
-  });
+  //   request.done(function(response) {
+  //     console.log(response.id);
+  //     $('#question-'+response.id+' .collapsible-header span').text(response.content)
+  //   });
+  // });
 
   $('.question-delete').on('click', function() {
     event.preventDefault();
