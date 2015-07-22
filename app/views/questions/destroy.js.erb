@@ -1,1 +1,4 @@
-$("#questions-holder").html("j(<%= render partial: "questions/questions", locals: {questions: @questions, topic_id: @topic.id, creator: @creator} %>)");
+$("#questions").html("<%= j( render partial: @questions.sort_by(&:created_at), locals: { creator: @creator})%>");
+$('.collapsible').collapsible({
+  accordion : true
+});

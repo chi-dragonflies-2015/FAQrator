@@ -64,3 +64,5 @@ gem 'coveralls', require: false
 gem 'rails_12factor', group: :production
 
 gem 'materialize-sass'
+
+gem 'zeroclipboard-rails'
