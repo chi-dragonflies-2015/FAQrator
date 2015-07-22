@@ -51,7 +51,10 @@ class QuestionsController < ApplicationController
       @question.liked_by @user
     end
 
-    redirect_to @question.topic
+    respond_to do |format|
+      format.js
+      format.html {redirect_to topic_path(@question.topic)}
+    end
   end
 
 private

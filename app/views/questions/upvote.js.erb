@@ -1,0 +1,2 @@
+event.stopPropagation();
+$("question-<%=@question.id%> .vote-count").text('<%=escape_javascript @question.votes.count %>');
