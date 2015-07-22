@@ -10,11 +10,17 @@
   <ul class="collapsible" data-collapsible="expandable">
   	<h5> Your Topics </h5>
     <% @topics.each do |topic| %>
+      <% if current_user == @user %>
       <li>
         <div class="collapsible-header"><%= link_to( topic.title , "/topics/#{topic.id}/edit") %></div>
         <div class="collapsible-body"><p><%= topic.description %></p></div>
       </li>
+      <% else %>
+      <li>
+        <div class="collapsible-header"><%= link_to( topic.title , "/topics/#{topic.id}") %></div>
+        <div class="collapsible-body"><p><%= topic.description %></p></div>
+      </li>
     <% end %>
-
+    <% end %>
   </ul>
 </div>
