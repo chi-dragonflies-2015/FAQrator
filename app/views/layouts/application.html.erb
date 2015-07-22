@@ -10,7 +10,6 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
 </head>
 
 <body class="grey lighten-2">
@@ -27,7 +26,7 @@
             <div class="input-field">
               <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
               <input id="search" name="search" type="search"  required>
-           
+
               <label for="search"><i class="material-icons">search</i></label>
               <button id="search_submit" form="search_form" type="submit" style="width: 1px; height: 1px; background-color: Transparent;background-repeat:no-repeat;border: none;cursor:pointer;overflow: hidden; outline:none;"></button>
             </div>

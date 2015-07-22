@@ -20,6 +20,12 @@
               <button class="btn waves-effect waves-light" type="submit" name="/topic/#{@topic.id}">Submit
                 <i class="material-icons right">send</i>
               </button>
+
+              <button class="btn waves-effect waves-light" id="copy-edit"  data-clipboard-text="<%=topic_url(@topic)%>/<%=@topic.edit_key%>"> Copy Edit URL
+              </button>
+
+              <button class="btn waves-effect waves-light" id="copy-show"  data-clipboard-text="<%=topic_url(@topic)%>"> Copy Public URL
+              </button>
             </div>
           <% end %>
         </div>
