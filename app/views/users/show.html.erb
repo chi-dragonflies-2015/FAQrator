@@ -1,6 +1,10 @@
 <div class = "container">
+  <section class="stats">
+    <%= render 'users/stats' %>
+  </section>
+ 
   <ul class="collapsible" data-collapsible="expandable">
-
+  	<h5> Your Topics </h5>
     <% @topics.each do |topic| %>
       <li>
         <div class="collapsible-header"><%= link_to( topic.title , "/topics/#{topic.id}/edit") %></div>
