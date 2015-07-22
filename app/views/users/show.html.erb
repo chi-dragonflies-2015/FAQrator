@@ -3,6 +3,10 @@
     <%= render 'users/stats' %>
   </section>
  
+  <section class="stats">
+    <%= render 'follow_form' %>
+  </section>
+
   <ul class="collapsible" data-collapsible="expandable">
   	<h5> Your Topics </h5>
     <% @topics.each do |topic| %>
