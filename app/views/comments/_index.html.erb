@@ -1,4 +1,8 @@
-<ul>
-<%= render question.comments %>
-</ul>
+  <div class="row">
+    <div class="col s12 comments">
+      <ul class="collapsible" data-collapsible="expandable">
+        <%= render partial: question.comments, locals: {creator: creator} %>
+      </ul>
+    </div>
+  </div>
 <%= render partial: "comments/new", locals: {question: question, creator: creator} %>

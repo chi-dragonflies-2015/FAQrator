@@ -1,0 +1,21 @@
+<div class="row">
+  <%= form_tag("/comments/#{comment.id}", method: "put", class: "col s12", remote: true) do %>
+    <div class="row">
+      <div class="input-field col s12">
+        <% if comment.response %>
+          <%= label_tag(:response, "response") %>
+          <%= text_area(:comment, :response, {class: "materialize-textarea", value: comment.response}) %>
+          <button class="btn waves-effect waves-light" type="submit" name="/questions/#{question.id}">Respond
+            <i class="material-icons right">send</i>
+          </button>
+        <% else %>
+          <%= label_tag(:response, "response") %>
+          <%= text_area(:comment, :response, {class: "materialize-textarea", placeholder: "Write your response here!"}) %>
+          <button class="btn waves-effect waves-light" type="submit" name="/questions/#{question.id}">Respond
+            <i class="material-icons right">send</i>
+          </button>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
