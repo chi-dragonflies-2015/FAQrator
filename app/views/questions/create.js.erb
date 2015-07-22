@@ -3,3 +3,4 @@ $("<%= escape_javascript(render partial: @question, locals: {creator: false}) %>
 $('.collapsible').collapsible({
   accordion : true
 });
+$(document).find('form').find("input[type=text], textarea").val("");

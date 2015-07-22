@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe TopicsController do
   let!(:topic) { create(:topic) }
+  let!(:user) { create(:user) }
 
   describe "GET #index" do
     it "assigns all topics as @topics" do
@@ -24,8 +25,8 @@ describe TopicsController do
       expect(assigns(:topic)).to eq(topic)
     end
 
-    it "renders a 404 status when edit key is incorrect" do
-      get :edit, { id: topic.to_param, edit_key: 555111}
+    it "renders a 404 status when edit key is incorrect and user is not creator" do
+      get :edit, { id: topic.to_param, edit_key: 887492, user_id: user}
       expect(response.status).to eq 404
     end
 
