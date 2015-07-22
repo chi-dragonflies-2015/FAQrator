@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
   def create
     @question = Question.find_by(id: params[:question_id])
     @comment = @question.comments.build(comment_params)
+    @creator = params[:creator]
     respond_to do |format|
       if @comment.save
         format.js
@@ -17,7 +18,7 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find(params[:id])
-    @creator = params[:comment][:creator]
+    @creator = params[:creator]
     respond_to do |format|
       if @comment.update_attributes(response_params)
         format.js {render "response.js"}

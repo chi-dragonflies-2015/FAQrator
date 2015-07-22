@@ -3,13 +3,13 @@
     <i class="material-icons text-lighten-1 blue-text">comment</i>
     <%= comment.content %> — <%= comment.author %>
     <%= comment.created_at.strftime("%b %d %l:%M %p") %>
-    <% if comment.response %>
-      <i class="material-icons text-lighten-1 blue-text right">expand_more</i>
-    <% end %>
     <% if creator %>
-      <%= link_to comment, :class => 'comment-delete right', method: :delete do %>
+      <%= link_to comment, :class => 'comment-delete right', method: :delete, remote: true do %>
         <i class="material-icons text-lighten-1 grey-text right">delete</i>
       <% end %>
+    <% end %>
+    <% if comment.response %>
+      <i class="material-icons text-lighten-1 blue-text right">expand_more</i>
     <% end %>
   </div>
   <div class="response collapsible-body grey lighten-5">
