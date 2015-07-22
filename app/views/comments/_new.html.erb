@@ -4,6 +4,7 @@
     <div class="row">
       <div class="input-field col s12">
         <%= hidden_field_tag(:question_id, question.id) %>
+        <%= hidden_field_tag(:creator, creator) %>
         <%= text_field(:comment, :content, {placeholder: "comment here"}) %>
         <%= text_field(:comment, :author, placeholder: "author name") %>
         <button class="btn waves-effect waves-light" type="submit" name="/comments">
