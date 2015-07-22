@@ -34,4 +34,18 @@ class User < ActiveRecord::Base
     following.include?(other_user)
   end
 
+  def star(topic)
+    subscriptions.create(topic_id: topic.id)
+  end
+
+
+  def unstar(topic)
+    subscriptions.find_by(topic_id: topic.id).destroy
+  end
+
+
+  def starred?(topic)
+    followed_topics.include?(topic)
+  end
+
 end
