@@ -28,7 +28,8 @@ feature "User visits the website" do
 
   scenario "when creator deletes a question" do
     comment = create(:comment, question: question)
-    visit "/topics/#{topic.friendly_id}"
+
+    visit "/topics/#{topic.friendly_id}/#{topic.edit_key}"
     find('.popout .collapsible-header', :text => question.content).click
       within('.popout') do
         click_link("delete", options = {href: comment_path(comment) })
