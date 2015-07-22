@@ -16,11 +16,8 @@ end
 
 # Topics
 users = User.all
-rand(5..10).times do
-  title = Faker::Hacker.say_something_smart
-  description = Faker::Lorem.paragraph
-  users.each { |user| user.topics.create!(title: title, description: description ) }
-end
+  users.each { |user| user.topics.create!(title: Faker::Hacker.say_something_smart, description: Faker::Lorem.paragraph ) }
+
 
 # Following relationships
 users = User.all
