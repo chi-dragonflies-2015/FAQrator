@@ -2,6 +2,9 @@ class Topic < ActiveRecord::Base
   has_many :questions
   belongs_to :user
 
+  has_many :subscriptions
+  has_many :subscribers, through: :subscriptions
+
   validates :title, presence: true
   validates :description, presence: true
 
