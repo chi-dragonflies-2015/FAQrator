@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(session[:user_id])
+    @user = User.find(params[:id])
     @topics = @user.topics
     redirect_to new_topic_path if @topics.length == 0
   end
