@@ -1,5 +1,8 @@
 <li id="question-<%= question.id %>">
   <div class="collapsible-header">
+    <span class="vote-count left">
+      <%= question.votes_for.size %>
+    </span>
     <i class="material-icons text-lighten-1 blue-text">
       <%= question.answer ? "chat_bubble" : "chat_bubble_outline" %>
     </i>
