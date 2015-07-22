@@ -1,4 +1,6 @@
 class Question < ActiveRecord::Base
+  default_scope { order(:cached_votes_up => :desc) }
+
   acts_as_votable
 
   has_many :comments

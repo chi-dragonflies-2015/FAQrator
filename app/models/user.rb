@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_many :topics
 
+  acts_as_voter
+
   has_secure_password
 
   validates :first_name, presence: true
