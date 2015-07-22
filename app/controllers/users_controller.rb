@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
-  def new
+  def index
+    @users = User.all 
+  end
 
+  def new
   end
 
   def create
@@ -18,6 +21,21 @@ class UsersController < ApplicationController
     @topics = @user.topics
     redirect_to new_topic_path if @topics.length == 0
   end
+
+  def following
+    @title = "Following"
+    @user  = User.find(params[:id])
+    @users = @user.following
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @user  = User.find(params[:id])
+    @users = @user.followers
+    render 'show_follow'
+  end
+
 
 
 private
