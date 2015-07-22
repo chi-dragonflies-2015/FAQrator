@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150721212213) do
+ActiveRecord::Schema.define(version: 20150722202458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,17 @@ ActiveRecord::Schema.define(version: 20150721212213) do
   add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
   add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
   add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer  "subscriber_id"
+    t.integer  "topic_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "subscriptions", ["subscriber_id", "topic_id"], name: "index_subscriptions_on_subscriber_id_and_topic_id", unique: true, using: :btree
+  add_index "subscriptions", ["subscriber_id"], name: "index_subscriptions_on_subscriber_id", using: :btree
+  add_index "subscriptions", ["topic_id"], name: "index_subscriptions_on_topic_id", using: :btree
 
   create_table "topics", force: :cascade do |t|
     t.string  "title"
