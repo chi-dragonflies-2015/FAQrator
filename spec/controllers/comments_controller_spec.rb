@@ -39,34 +39,22 @@ describe CommentsController do
       end
     end
   end
-  pending "PUT update" do
+  describe "PUT update" do
     context "when valid params are passed" do
 
       it "edits the current comment" do
-        expect { put :update, id: comment.id, comment: { content: comment.content }}.to change{ Comment.all.count }.by(0)
+        expect { put :update, id: comment.id, comment: { response: "test response" }}.to change{ Comment.all.count }.by(0)
       end
 
       it "assigns a newly edited comment as @comment" do
-        put :update, id: comment.id, comment: { content: comment.content }
+        put :update, id: comment.id, comment: { response: "test response" }
         expect(assigns(:comment)).to eq(Comment.last)
       end
 
       it "redirects to the edited comment" do
 
        put :update, id: comment.id, comment: { content: comment.content }
-        expect(response).to redirect_to action: :show, id: assigns(:comment).id
-      end
-    end
-
-    context "when invalid params are passed" do
-      it "assigns the accessed comment as @comment" do
-        put :update, id: comment.id, comment: { content: nil }
-        expect(assigns(:comment).id).to eq comment.id
-      end
-
-      it "re-renders the 'edit' template" do
-        put :update, id: comment.id, comment: { content: nil }
-        expect(response).to render_template(:edit)
+        expect(response.status).to eq 302
       end
     end
   end
