@@ -1,2 +1,4 @@
-event.stopPropagation();
-$("question-<%=@question.id%> .vote-count").text('<%=escape_javascript @question.votes.count %>');
+$("#questions").html("<%= j( render partial: @questions, locals: { creator: @creator})%>");
+$('.collapsible').collapsible({
+  accordion : true
+});

@@ -43,6 +43,8 @@ class QuestionsController < ApplicationController
 
   def upvote
     @question = Question.find(params[:id])
+    @topic = @question.topic
+    @questions = @topic.questions
     @user = current_user
 
     if @user.voted_for? @question
@@ -53,7 +55,7 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       format.js
-      format.html {redirect_to topic_path(@question.topic)}
+      format.html {redirect_to topic_path(@topic)}
     end
   end
 
