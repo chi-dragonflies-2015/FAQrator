@@ -5,13 +5,12 @@
         <table style= "padding: 5px;">
 		  <tr>
 		    <td>
-		      <a href="<%= following_user_path(@user) %>" style="color: white;">Following </a><br/>
-		      <a href="<%= following_user_path(@user) %>" style="color: white;"><%= @user.following.count %></a>
+		      Following <br/>
+		      <%= @user.following.count %>
 		    </td>
 		    <td>
-		      <a href="<%= followers_user_path(@user) %>" style="color: white;">
-		        Followers</a> <br/>
-		      <a href="<%= followers_user_path(@user) %>" style="color: white;"><%= @user.followers.count %> </a>
+		        Followers<br/>
+		      <%= @user.followers.count %>
 		    </td>
 		  </tr>
 		  <tr>
