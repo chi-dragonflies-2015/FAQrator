@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
 
+  def index
+    @users = User.all 
+  end
+
+
   def new
   end
 
@@ -14,10 +19,27 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(session[:user_id])
+    @user = User.find(params[:id])
     @topics = @user.topics
-    redirect_to new_topic_path if @topics.length == 0
+    @starred = @user.followed_topics
+    @users = @user.following
+    @feed = @user.feed.sort_by(&:created_at).first(15)
   end
+
+  def following
+    @title = "Following"
+    @user  = User.find(params[:id])
+    @users = @user.following
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @user  = User.find(params[:id])
+    @users = @user.followers
+    render 'show_follow'
+  end
+
 
 
 private

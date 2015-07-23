@@ -1,0 +1,29 @@
+<div class="row">   
+  <div class="card-panel z-depth-3 blue darken-1">
+    <span class="white-text"> 
+      <div class="stats">
+        <table style= "padding: 5px;">
+		  <tr>
+		    <td> 
+		      <a href="<%= following_user_path(@user) %>" style="color: white;">Following </a><br/>
+		      <a href="<%= following_user_path(@user) %>" style="color: white;"><%= @user.following.count %></a>
+		    </td>   
+		    <td> 
+		      <a href="<%= followers_user_path(@user) %>" style="color: white;">    
+		        Followers</a> <br/>
+		      <a href="<%= followers_user_path(@user) %>" style="color: white;"><%= @user.followers.count %> </a> 
+		    </td>
+		  </tr> 
+		  <tr> 
+		    <td> Your Topics <br/>
+		    <%= @user.topics.count %> 
+		    </td>
+		    <td>  Starred <br/>
+              <%= @user.followed_topics.count %> </a> 
+		    </td>
+		  </tr>
+		</table>
+	  </div>
+    </span>
+  </div> 
+</div>

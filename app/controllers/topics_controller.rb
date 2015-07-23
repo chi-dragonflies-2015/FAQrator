@@ -20,7 +20,7 @@ class TopicsController < ApplicationController
 
       redirect_to (topic_path(@topic) + '/' + @topic.edit_key), notice: "Edit your page at #{topic_url(@topic)}/#{@topic.edit_key}"
   	else
-  	  render :new, notice: "cant be blank"
+  	  render :new, notice: "Cannot be blank"
   	end
   end
 
@@ -43,21 +43,34 @@ class TopicsController < ApplicationController
   end
 
   def update
+    set_topic
+    if @topic.user && current_user && current_user == @topic.user
+      session[:edit_key] = @topic.edit_key
+    end
+
     if session_key_matches? && @topic.update_attributes(edit_topic_params)
-      flash[:success] = "Topic Updated"
       session[:edit_key] = nil
-      redirect_to topic_path(@topic)
+      redirect_to topic_path(@topic), notice: "Topic: #{@topic.title} has been updated."
     else
       render :edit
     end
   end
 
   def destroy
-    if session_key_matches?
+    set_topic
+    if @topic.user && current_user && current_user == @topic.user
+      session[:edit_key] = @topic.edit_key
+    end
+
+    if session_key_matches? 
       @topic.destroy
-      flash[:success] = "Topic deleted"
       session[:edit_key] = nil
-      redirect_to root_url
+      
+      if current_user
+        redirect_to user_path(current_user), notice: "Topic: #{@topic.title} has been deleted."
+      else
+        redirect_to root_url, notice: "Topic: #{@topic.title} has been deleted."
+      end
     else
       render status: 404
     end

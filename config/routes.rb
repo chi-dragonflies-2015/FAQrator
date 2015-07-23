@@ -9,7 +9,15 @@ Rails.application.routes.draw do
   get '/sessions/new' => 'sessions#new', as: 'new_session'
   post '/sessions' => 'sessions#create'
   delete '/sessions' => 'sessions#destroy'
-  resources :users, :except => :index
+  resources :users do
+     member do
+      get :following, :followers
+    end
+  end
+  
+  resources :relationships, :only => [:create, :destroy]
+  resources :subscriptions, :only => [:create, :destroy]
+
   resources :questions
   resources :comments, :only => [:create, :update, :destroy]
   resources :questions do
