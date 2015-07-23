@@ -15,7 +15,8 @@
  */
 
 @import "materialize/components/color";
-$primary-color: color("blue", "lighten-2") !default;
+$primary-color: color("cyan", "darken-2") !default;
+$seconday-color: color("amber", "accent-4") !default;
 @import 'materialize';
 
 span.question {
@@ -25,4 +26,36 @@ span.question {
 .collapsible-header {
   white-space: normal;
   height: auto!important;
+}
+
+.btn {
+  background-color: #ffab00!important;
+}
+
+/* label color */
+/*.input-field label {
+  color: #0097a7;
+}*/
+/* label focus color */
+.input-field input[type=text]:focus + label {
+  color: #0097a7;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid #0097a7;
+  box-shadow: 0 1px 0 0 #0097a7;
+}
+/* valid color */
+.input-field input[type=text].valid {
+  border-bottom: 1px solid #0097a7;
+  box-shadow: 0 1px 0 0 #0097a7;
+}
+/* invalid color */
+.input-field input[type=text].invalid {
+  border-bottom: 1px solid #0097a7;
+  box-shadow: 0 1px 0 0 #0097a7;
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+  color: #0097a7;
 }
