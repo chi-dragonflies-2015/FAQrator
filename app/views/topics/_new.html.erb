@@ -9,6 +9,7 @@
             <div class="input-field white ">
               <input placeholder="Title" name="topic[title]" type="text" class="validate" required>
               <textarea placeholder="Description" name="topic[description]" class="materialize-textarea" required></textarea>
+              <p>Custom header color:</p>
               <p>
                 <input type="radio" name="topic[primary_color]" id="primary_color_red" value="red">
                 <%= label_tag(:primary_color_red, "Red") %>
@@ -18,8 +19,8 @@
                 <%= label_tag(:primary_color_orange, "Orange") %>
               </p>
               <p>
-                <input type="radio" name="topic[primary_color]" id="primary_color_yellow" value="yellow">
-                <%= label_tag(:primary_color_yellow, "Yellow") %>
+                <input type="radio" name="topic[primary_color]" id="primary_color_amber" value="amber">
+                <%= label_tag(:primary_color_amber, "Yellow") %>
               </p>
               <p>
                 <input type="radio" name="topic[primary_color]" id="primary_color_green" value="green">
