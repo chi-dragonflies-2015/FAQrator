@@ -48,4 +48,16 @@ class User < ActiveRecord::Base
     followed_topics.include?(topic)
   end
 
+  def feed
+    feed = []
+    self.following.each do |user|
+        user.topics.each do |topic|
+          feed << topic
+        end
+    end
+    feed
+  end
+ 
+    
+
 end
