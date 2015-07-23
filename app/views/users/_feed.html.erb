@@ -1,0 +1,9 @@
+  <ul class="collapsible" data-collapsible="expandable">
+    <% @feed.each do |topic| %>
+      <li>
+        <div class="collapsible-header"><%= link_to( topic.title , "/topics/#{topic.id}") %> <%= topic.created_at.localtime.strftime("%b %d %l:%M %p")  %>
+        </div>
+        <div class="collapsible-body"><p><%= topic.description %></p></div>
+      </li>
+    <% end %>
+  </ul>

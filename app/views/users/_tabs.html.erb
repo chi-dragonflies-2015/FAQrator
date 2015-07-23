@@ -1,0 +1,19 @@
+  <div class="row">
+    <div class="col s12">
+      <ul class="tabs">
+        <% unless current_user != @user %>
+          <li class="tab col s3"><a class="active" href="#feed">Feed</a></li>
+          <li class="tab col s3"><a  href="#starred_topics">Starred</a></li>
+          <li class="tab col s3"><a href="#following">Following</a></li>
+        <% end %>
+          <li class="tab col s3"><a href="#my_topics">Topics</a></li>
+      </ul>
+    </div>
+
+    <% unless current_user != @user %>
+      <div id="feed" class="col s12"><%= render 'feed' %></div>
+      <div id="starred_topics" class="col s12"> <%= render 'starred_topics' %> </div>
+      <div id="following" class="col s12"><%= render 'users' %></div>
+    <% end %>
+      <div id="my_topics" class="col s12"><%= render 'topics' %></div>
+  </div>
