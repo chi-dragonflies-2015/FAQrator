@@ -15,7 +15,9 @@
  */
 
 @import "materialize/components/color";
-$primary-color: color("blue", "lighten-2") !default;
+$primary-color: color("cyan", "darken-3") !default;
+$secondary-color: color("blue-grey", "darken-3") !default;
+
 @import 'materialize';
 
 span.question {
