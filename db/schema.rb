@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150722202458) do
+ActiveRecord::Schema.define(version: 20150723035947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,11 +56,13 @@ ActiveRecord::Schema.define(version: 20150722202458) do
   add_index "subscriptions", ["topic_id"], name: "index_subscriptions_on_topic_id", using: :btree
 
   create_table "topics", force: :cascade do |t|
-    t.string  "title"
-    t.text    "description"
-    t.string  "edit_key"
-    t.string  "slug"
-    t.integer "user_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "edit_key"
+    t.string   "slug"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "topics", ["slug"], name: "index_topics_on_slug", using: :btree
