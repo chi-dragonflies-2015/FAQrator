@@ -11,6 +11,7 @@ FAQrator is a tool for creating dynamic ad-hoc FAQS for events like lectures, cl
 * PostgreSQL 9.4.1
 * Internet Access
 * Javascript Enabled
+* A browser with HTML5
 
 ## External APIs and Libraries
 * Materialize
