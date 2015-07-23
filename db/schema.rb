@@ -76,9 +76,9 @@ ActiveRecord::Schema.define(version: 20150723035947) do
     t.string   "edit_key"
     t.string   "slug"
     t.integer  "user_id"
+    t.string   "primary_color"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "primary_color"
   end
 
   add_index "topics", ["slug"], name: "index_topics_on_slug", using: :btree

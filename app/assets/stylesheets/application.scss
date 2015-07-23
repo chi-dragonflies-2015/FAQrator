@@ -15,10 +15,28 @@
  */
 
 @import "materialize/components/color";
-$primary-color: color("cyan", "darken-3") !default;
-$secondary-color: color("blue-grey", "darken-3") !default;
+
+$primary-color: color("cyan", "darken-2") !default;
+$seconday-color: color("amber", "accent-4") !default;
 
 @import 'materialize';
+
+html {
+  font-family: 'Raleway', sans-serif;
+}
+
+#FAQ {
+  font-family: 'Russo One', sans-serif;
+}
+
+#rator {
+  font-family: 'Pacifico';
+}
+
+.card-title {
+  font-family: 'Merriweather', serif;
+  font-weight: bold!important;
+}
 
 span.question {
   word-wrap: break-word;
@@ -27,6 +45,54 @@ span.question {
 .collapsible-header {
   white-space: normal;
   height: auto!important;
+}
+
+.btn {
+  background-color: #ffab00!important;
+}
+
+/*.tab:hover {
+  background-color: #D48C00
+}*/
+
+.collapsible a {
+  color: #0097a7!important;
+}
+
+.tab a {
+  color: #292929;
+}
+
+.collapsible-body {
+  background-color: #fafafa;
+}
+
+/* label color */
+/*.input-field label {
+  color: #0097a7;
+}*/
+/* label focus color */
+.input-field input[type=text]:focus + label {
+  color: #0097a7;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid #0097a7;
+  box-shadow: 0 1px 0 0 #0097a7;
+}
+/* valid color */
+.input-field input[type=text].valid {
+  border-bottom: 1px solid #0097a7;
+  box-shadow: 0 1px 0 0 #0097a7;
+}
+/* invalid color */
+.input-field input[type=text].invalid {
+  border-bottom: 1px solid #0097a7;
+  box-shadow: 0 1px 0 0 #0097a7;
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+  color: #0097a7;
 }
 
 [type="radio"]:checked + label[for="primary_color_red"]:after {
