@@ -14,8 +14,6 @@ class TopicsController < ApplicationController
   end
 
   def create
-    puts "============================================"
-    puts new_topic_params
   	@topic = Topic.new(new_topic_params)
     @topic.user = current_user
   	if @topic.save
@@ -90,5 +88,4 @@ private
   def user_matches?
     @topic.user.id ? session[:user_id] == @topic.user.id : false
   end
-
 end

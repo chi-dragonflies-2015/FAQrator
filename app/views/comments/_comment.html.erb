@@ -2,8 +2,8 @@
   <div class="collapsible-header">
     <i class="material-icons text-lighten-1 blue-text">comment</i>
     <%= comment.content %> — <%= comment.author %>
-    <%= comment.created_at.strftime("%b %d %l:%M %p") %>
-    <% if creator %>
+    <%= comment.created_at.localtime.strftime("%b %d %l:%M %p") %>
+    <% if creator && creator != "0" %>
       <%= link_to comment, :class => 'comment-delete right', method: :delete, remote: true do %>
         <i class="material-icons text-lighten-1 grey-text right">delete</i>
       <% end %>
@@ -14,7 +14,7 @@
   </div>
   <div class="response collapsible-body grey lighten-5">
     <p>
-      <% if creator %>
+      <% if creator && creator != "0" %>
         <%= render(partial: "comments/response", locals: {comment: comment, creator: creator}) %>
       <% else %>
         <%= comment.response ? comment.response : "<span class='grey-text'>The creator has not replied to this comment.</span>".html_safe %>

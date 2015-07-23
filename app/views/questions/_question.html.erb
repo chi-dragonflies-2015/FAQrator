@@ -4,7 +4,7 @@
       <%= question.votes_for.size %>
     </span>
     <% if current_user %>
-      <%= link_to like_question_path(question), method: :put, remote: true do %>
+      <%= link_to like_question_path(question), :class => 'question-vote', method: :put, remote: true do %>
         <i class="material-icons text-lighten-1 grey-text">thumb_up</i>
       <% end %>
     <% end %>
@@ -20,13 +20,6 @@
       <%= link_to question, :class => 'question-delete right', method: :delete, remote: true do %>
         <i class="material-icons text-lighten-1 grey-text right">delete</i>
       <% end %>
-    <% else %>
-
-      <%# unless question.answer %>
-<!--         <a class="question-edit right modal-trigger" href="#edit-question-<%= question.id %>">
-          <i class="material-icons text-lighten-1 grey-text right">edit</i>
-        </a> -->
-      <%# end %>
     <% end %>
 
   </div>
