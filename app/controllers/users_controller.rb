@@ -19,7 +19,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @topics = @user.topics
-    redirect_to new_topic_path if @topics.length == 0
+    @starred = @user.followed_topics
+    @users = @user.following
+    @feed = @user.feed.sort_by(&:created_at).first(15)
   end
 
   def following
