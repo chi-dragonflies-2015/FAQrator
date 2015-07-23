@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_filter :current_topic
 
   def current_topic
-    @current_topic ||= Topic.find_by(id: params[:id]) if params[:id]
+    @current_topic ||= Topic.find_by(slug: params[:id]) if params[:id]
   end
 
   def current_user
