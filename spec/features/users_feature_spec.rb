@@ -29,7 +29,9 @@ feature "User visits the website" do
     fill_in "user[password]", with: user.password
     click_button "Log In"
     expect(page).to have_content("Log Out")
-    click_link "Log Out"  
+    within ".side-nav" do
+      click_link "Log Out"
+    end
     expect(page).to have_content("Log In")
   end
 
