@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end
   
   resources :relationships, :only => [:create, :destroy]
+  resources :subscriptions, :only => [:create, :destroy]
 
   resources :questions
   resources :comments, :only => [:create, :update, :destroy]
