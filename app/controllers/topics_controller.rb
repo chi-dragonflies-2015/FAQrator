@@ -14,6 +14,8 @@ class TopicsController < ApplicationController
   end
 
   def create
+    puts "============================================"
+    puts new_topic_params
   	@topic = Topic.new(new_topic_params)
     @topic.user = current_user
   	if @topic.save
@@ -66,7 +68,7 @@ class TopicsController < ApplicationController
 private
 
   def new_topic_params
-    params.require(:topic).permit(:title, :description)
+    params.require(:topic).permit(:title, :description, :primary_color)
   end
 
   def edit_topic_params
