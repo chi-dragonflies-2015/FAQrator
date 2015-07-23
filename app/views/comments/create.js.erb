@@ -1,4 +1,5 @@
-$("<%= escape_javascript(render partial: @comment, locals: {creator: @creator}) %>").appendTo("li#question-<%= @comment.question.id%> ul");
+console.log("<%= j ( @creator) %>")
+$("<%= escape_javascript(render partial: @comment, locals: {creator: false}) %>").appendTo("li#question-<%= @comment.question.id%> ul");
 $("li#question-<%= @comment.question.id %> .errors").remove();
 $('.collapsible').collapsible({
   accordion : true
