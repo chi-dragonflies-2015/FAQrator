@@ -5,6 +5,9 @@
         <span class="card-title grey-text text-darken-4">  <%= @topic.title %>  </span>
         <p>  <%= @topic.description %>  </p>
       </div>
+      <section class="stats right">
+        <%= render 'star_form' %>
+      </section>
     </div>
   </div>
 </div>

@@ -1,0 +1,15 @@
+  <ul class="collapsible" data-collapsible="expandable">
+    <% @starred.each do |topic| %>
+      <% if current_user == @user %>
+      <li>
+        <div class="collapsible-header"><%= link_to( topic.title , "/topics/#{topic.id}/edit") %> <%= topic.created_at.localtime.strftime("%b %d %l:%M %p")  %></div>
+        <div class="collapsible-body"><p><%= topic.description %></p></div>
+      </li>
+      <% else %>
+      <li>
+        <div class="collapsible-header"><%= link_to( topic.title , "/topics/#{topic.id}") %><%= topic.created_at.localtime.strftime("%b %d %l:%M %p")  %></div>
+        <div class="collapsible-body"><p><%= topic.description %></p></div>
+      </li>
+    <% end %>
+    <% end %>
+  </ul>

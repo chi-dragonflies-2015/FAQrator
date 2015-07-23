@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150722201516) do
+ActiveRecord::Schema.define(version: 20150723035947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,13 +48,37 @@ ActiveRecord::Schema.define(version: 20150722201516) do
   add_index "questions", ["cached_weighted_score"], name: "index_questions_on_cached_weighted_score", using: :btree
   add_index "questions", ["cached_weighted_total"], name: "index_questions_on_cached_weighted_total", using: :btree
 
+  create_table "relationships", force: :cascade do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
+  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
+  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer  "subscriber_id"
+    t.integer  "topic_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "subscriptions", ["subscriber_id", "topic_id"], name: "index_subscriptions_on_subscriber_id_and_topic_id", unique: true, using: :btree
+  add_index "subscriptions", ["subscriber_id"], name: "index_subscriptions_on_subscriber_id", using: :btree
+  add_index "subscriptions", ["topic_id"], name: "index_subscriptions_on_topic_id", using: :btree
+
   create_table "topics", force: :cascade do |t|
-    t.string  "title"
-    t.text    "description"
-    t.string  "edit_key"
-    t.string  "slug"
-    t.integer "user_id"
-    t.string  "primary_color"
+    t.string   "title"
+    t.text     "description"
+    t.string   "edit_key"
+    t.string   "slug"
+    t.integer  "user_id"
+    t.string   "primary_color"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "topics", ["slug"], name: "index_topics_on_slug", using: :btree

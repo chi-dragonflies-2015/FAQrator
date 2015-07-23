@@ -1,0 +1,4 @@
+$("#questions").html("<%= j( render partial: @questions, locals: { creator: @creator})%>");
+$('.collapsible').collapsible({
+  accordion : true
+});

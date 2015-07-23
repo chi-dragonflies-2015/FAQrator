@@ -1,12 +1,24 @@
-<div class = "container">
-  <ul class="collapsible" data-collapsible="expandable">
 
-    <% @topics.each do |topic| %>
-      <li>
-        <div class="collapsible-header"><%= link_to( topic.title , "/topics/#{topic.id}/edit") %></div>
-        <div class="collapsible-body"><p><%= topic.description %></p></div>
-      </li>
-    <% end %>
-
-  </ul>
+<div class="row">
 </div>
+<div class="row">
+</div>
+<div class="row">
+
+  <div class="col m3 l3 hide-on-small-only">
+    <section class="stats">
+      <%= render 'stats' %>
+    </section> 
+    <section class="follow">
+    <%= render 'follow_form' %>
+  </section>
+  </div>
+
+  <div class="col s12 m9 l9">
+    <section class="tabs">
+      <%= render 'tabs' %>
+    </section>
+  </div>
+
+</div>
+
