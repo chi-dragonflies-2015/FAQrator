@@ -27,6 +27,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# Add voting functionality
+gem 'acts_as_votable', '~> 0.10.0'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -61,3 +64,5 @@ gem 'coveralls', require: false
 gem 'rails_12factor', group: :production
 
 gem 'materialize-sass'
+
+gem 'zeroclipboard-rails'

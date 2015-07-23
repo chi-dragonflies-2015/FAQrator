@@ -41,6 +41,24 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def upvote
+    @question = Question.find(params[:id])
+    @topic = @question.topic
+    @questions = @topic.questions
+    @user = current_user
+
+    if @user.voted_for? @question
+      @question.unliked_by @user
+    else
+      @question.liked_by @user
+    end
+
+    respond_to do |format|
+      format.js
+      format.html {redirect_to topic_path(@topic)}
+    end
+  end
+
 private
 
   def question_params

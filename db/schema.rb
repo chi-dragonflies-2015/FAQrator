@@ -28,10 +28,25 @@ ActiveRecord::Schema.define(version: 20150723035947) do
   create_table "questions", force: :cascade do |t|
     t.string   "content"
     t.text     "answer"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.integer  "topic_id"
+    t.integer  "cached_votes_total",      default: 0
+    t.integer  "cached_votes_score",      default: 0
+    t.integer  "cached_votes_up",         default: 0
+    t.integer  "cached_votes_down",       default: 0
+    t.integer  "cached_weighted_score",   default: 0
+    t.integer  "cached_weighted_total",   default: 0
+    t.float    "cached_weighted_average", default: 0.0
   end
+
+  add_index "questions", ["cached_votes_down"], name: "index_questions_on_cached_votes_down", using: :btree
+  add_index "questions", ["cached_votes_score"], name: "index_questions_on_cached_votes_score", using: :btree
+  add_index "questions", ["cached_votes_total"], name: "index_questions_on_cached_votes_total", using: :btree
+  add_index "questions", ["cached_votes_up"], name: "index_questions_on_cached_votes_up", using: :btree
+  add_index "questions", ["cached_weighted_average"], name: "index_questions_on_cached_weighted_average", using: :btree
+  add_index "questions", ["cached_weighted_score"], name: "index_questions_on_cached_weighted_score", using: :btree
+  add_index "questions", ["cached_weighted_total"], name: "index_questions_on_cached_weighted_total", using: :btree
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id"
@@ -63,6 +78,7 @@ ActiveRecord::Schema.define(version: 20150723035947) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "primary_color"
   end
 
   add_index "topics", ["slug"], name: "index_topics_on_slug", using: :btree
@@ -77,6 +93,21 @@ ActiveRecord::Schema.define(version: 20150723035947) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer  "votable_id"
+    t.string   "votable_type"
+    t.integer  "voter_id"
+    t.string   "voter_type"
+    t.boolean  "vote_flag"
+    t.string   "vote_scope"
+    t.integer  "vote_weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
+  add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
 
   add_foreign_key "topics", "users"
 end
