@@ -28,15 +28,15 @@
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <% if current_user %>
               <li><%= link_to "Home", user_path(current_user) %></li>
-              <li><a href="<%= topics_url %>">Topics</a></li>
               <li><a href="<%= new_topic_path %>">Create A Topic</a></li>
+              <li><a href="<%= topics_url %>">Topics</a></li>
               <li><a href="<%= users_url %>">Users</a></li>
               <li><%= link_to "Log Out", sessions_path, :method => :delete %></li>
             <% else %>
               <li><a href="<%= new_session_path %>">Log In</a></li>
               <li><a href="<%= new_user_path %>">Sign Up</a></li>
-              <li><a href="<%= topics_url %>">Topics</a></li>
               <li><a href="<%= new_topic_path %>">Create A Topic</a></li>  
+              <li><a href="<%= topics_url %>">Topics</a></li>
             <% end %>  
             <li><form id="search_form" action="/topics/search" method="POST" style="height: 64px;">
             <div class="input-field">
@@ -51,16 +51,15 @@
       <ul class="side-nav" id="mobile-demo">
         <% if current_user %>
               <li><%= link_to "Home", user_path(current_user) %></li>
-              <li><a href="<%= topics_url %>">Topics</a></li>
               <li><a href="<%= new_topic_path %>">Create A Topic</a></li>
+              <li><a href="<%= topics_url %>">Topics</a></li>
               <li><a href="<%= users_url %>">Users</a></li>
               <li><%= link_to "Log Out", sessions_path, :method => :delete %></li>
             <% else %>
               <li><a href="<%= new_session_path %>">Log In</a></li>
               <li><a href="<%= new_user_path %>">Sign Up</a></li>
-              <li><a href="<%= topics_url %>">Topics</a></li>
               <li><a href="<%= new_topic_path %>">Create A Topic</a></li>
-              <li><a href="<%= users_url %>">Users</a></li>
+              <li><a href="<%= topics_url %>">Topics</a></li>
             <% end %>
       </ul>
     </div>
