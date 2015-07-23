@@ -88,5 +88,4 @@ private
   def user_matches?
     @topic.user.id ? session[:user_id] == @topic.user.id : false
   end
-
 end

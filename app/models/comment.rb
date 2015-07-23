@@ -9,5 +9,4 @@ class Comment < ActiveRecord::Base
   def init
     self.author = "Guest#{rand(1000)}" if author == ""
   end
-
 end

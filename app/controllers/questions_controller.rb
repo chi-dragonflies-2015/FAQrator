@@ -10,7 +10,6 @@ class QuestionsController < ApplicationController
       else
         format.js { render "create_errors.js"}
         format.html { redirect_to topic_path(@topic), notice: "question cannot be blank" }
-
       end
     end
   end
@@ -64,5 +63,4 @@ private
   def question_params
     params.require(:question).permit(:content, :answer)
   end
-
 end
