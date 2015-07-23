@@ -4,7 +4,7 @@
     <% @topics.each do |topic| %>
     	<li>
     	  <div class="collapsible-header"><%= link_to( topic.title , topic_path(topic), :'data-no-turbolink' => true) %></div>
-        <div class="collapsible-body"><p><%= topic.description %></p></div>
+        <div class="collapsible-body grey lighten-5"><p><%= topic.description %></p></div>
       </li>
     <% end %>
 

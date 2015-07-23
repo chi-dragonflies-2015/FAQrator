@@ -21,6 +21,23 @@ $seconday-color: color("amber", "accent-4") !default;
 
 @import 'materialize';
 
+html {
+  font-family: 'Raleway', sans-serif;
+}
+
+#FAQ {
+  font-family: 'Russo One', sans-serif;
+}
+
+#rator {
+  font-family: 'Pacifico';
+}
+
+.card-title {
+  font-family: 'Merriweather', serif;
+  font-weight: bold!important;
+}
+
 span.question {
   word-wrap: break-word;
 }
@@ -32,6 +49,22 @@ span.question {
 
 .btn {
   background-color: #ffab00!important;
+}
+
+/*.tab:hover {
+  background-color: #D48C00
+}*/
+
+.collapsible a {
+  color: #0097a7!important;
+}
+
+.tab a {
+  color: #292929;
+}
+
+.collapsible-body {
+  background-color: #fafafa;
 }
 
 /* label color */
