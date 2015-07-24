@@ -26,6 +26,8 @@ use ```rspec```
 ## Schema
 ![Initial Schema](/initial_schema.png "initial schema")
 
+![Final Schema](/final_schema.png "final schema")
+
 ## Contributors
 * Henry Firth
 * Lola Adekunle
